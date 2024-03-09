@@ -27,12 +27,6 @@ Iterative approaches, like Agile Scrum are commonly adopted to enhance the softw
 │   └── sprintissue
 │       ├── productivity
 │       └── quality_impact
-├── Errors
-│   ├── apache
-│   ├── jenkins
-│   ├── jira
-│   ├── spring
-│   └── talendforge
 ├── Models
 │   ├── DevModels
 │   │   ├── apache
@@ -77,96 +71,35 @@ Iterative approaches, like Agile Scrum are commonly adopted to enhance the softw
 │       │   └── talendforge
 │       └── seBERT
 │           └── readme.txt
-├── Predictions
-│   ├── apache
-│   ├── jenkins
-│   ├── jira
-│   ├── spring
-│   └── talendforge
 ├── Results
+│   ├── Evaluation Results
+│   │   ├── apache
+│   │   ├── jenkins
+│   │   ├── jira
+│   │   ├── spring
+│   │   └── talendforge
+│   ├── Raw Errors
+│   │   ├── apache
+│   │   ├── jenkins
+│   │   ├── jira
+│   │   ├── spring
+│   │   └── talendforge
+│   ├── Predictions
+│   │   ├── apache
+│   │   ├── jenkins
+│   │   ├── jira
+│   │   ├── spring
+│   │   └── talendforge
 │   ├── Productivity.pdf
-│   ├── Quality.pdf
-│   ├── apache
-│   ├── jenkins
-│   ├── jira
-│   ├── spring
-│   └── talendforge
+│   └── Quality.pdf
 ├── Scripts
 │   ├── Data
 │   │   ├── DataCollection
-│   │   │   ├── GetActivityStream.py
-│   │   │   ├── GetBoard.py
-│   │   │   ├── GetBoardDetail.py
-│   │   │   ├── GetRapidBoard.py
-│   │   │   ├── GetSprintIssue.py
-│   │   │   └── GetTeammemberIssue.py
 │   │   └── DataExtraction
 │   │       ├── DeveloperFurtherInfo
-│   │       │   ├── Activeness.py
-│   │       │   ├── MostPreTypeDev.py
-│   │       │   ├── NoDistinctAction.py
-│   │       │   ├── RunScripts.py
-│   │       │   └── SeqActionIssueType.py
-│   │       ├── ExtractActivityIssue.py
-│   │       ├── ExtractBoardFeature.py
-│   │       ├── ExtractIssueAttribute.py
-│   │       ├── ExtractIssueAttributeAtStartDate.py
-│   │       ├── ExtractIssueChangeLog.py
-│   │       ├── ExtractIssueComment.py
-│   │       ├── ExtractIssueComponent.py
-│   │       ├── ExtractNoReopen.py
-│   │       ├── ExtractQualitative.py
-│   │       ├── ExtractQuantitative.py
-│   │       ├── ExtractSprintAssignee.py
-│   │       ├── ExtractSprintAttribute.py
-│   │       ├── ExtractSprintIssue.py
 │   │       ├── IssueFurtherInfo
-│   │       │   ├── NoChangePrior.py
-│   │       │   ├── NoComment.py
-│   │       │   ├── ReopenStatus.py
-│   │       │   └── RunScripts.py
-│   │       └── SprintFurtherInfo
-│   │           ├── NoCompletedIssue.py
-│   │           ├── NoIssue.py
-│   │           ├── NoTeammember.py
-│   │           └── RunScripts.py
-│   ├── Modeling
-│   │   ├── ActGRU.py
-│   │   ├── ActLSTM.py
-│   │   ├── ExperimentWithAk.py
-│   │   ├── LoadData.py
-│   │   ├── PrepDataActRNN.py
-│   │   ├── PrepEmbFeatures.py
-│   │   ├── PrepExisting.py
-│   │   ├── PrepSprint2vec.py
-│   │   ├── PrepSprint2vecNoText.py
-│   │   ├── PrepSprintDev.py
-│   │   ├── PrepSprintFeatures.py
-│   │   ├── PrepSprintIssue.py
-│   │   ├── PrepTabularFeatures.py
-│   │   ├── PreprocessData.py
-│   │   ├── SplitData.py
-│   │   ├── SummarizeResult.py
-│   │   ├── TrainActRNN.py
-│   │   ├── akregressor.py
-│   │   ├── baseline.py
-│   │   ├── bert.py
-│   │   ├── bow.py
-│   │   ├── run_baseline.py
-│   │   ├── run_data.py
-│   │   ├── run_experimentwithak.py
-│   │   ├── run_prepexisting.py
-│   │   ├── run_prepsprint.py
-│   │   ├── run_prepsprint2vec.py
-│   │   ├── run_prepsprint2vecnotext.py
-│   │   ├── run_prepsprintdev.py
-│   │   ├── run_prepsprintissue.py
-│   │   ├── run_preptabular.py
-│   │   ├── run_text.py
-│   │   ├── run_trainact.py
-│   │   ├── seBERTPreprocessor.py
-│   │   ├── sow2v.py
-│   │   └── tfidf.py
+│   │       ├── SprintFurtherInfo
+│   │       └── MainInfo
 │   ├── act_requirements.txt
 │   ├── ak_requirements.txt
 │   └── text_requirements.txt
@@ -176,29 +109,81 @@ Iterative approaches, like Agile Scrum are commonly adopted to enhance the softw
 ```
 
 ## Contents
-- `Dataset`: Contains the datasets used in the study. The datasets are divided into different folders based on the features used in the study, which are `existing`, `sprint2vec` (our approach), `onlysprint` (ALT 1), `onlytabular` (ALT 2), , `sprintissue` (ALT 3), `sprintdev` (ALT 4), and `sprint2vecnotext` (ALT 5). Each of these folders (excepy `existing` and `onlysprint`) contains two subfolders, `productivity` and `quality_impact` for the two regression tasks.
-- `Errors`: Contains the error files for raw errors and absolute errors generated during the model evaluation.
-- `Models`: Contains the trained models for the different approaches across the different projects. The models are divided into three subfolders, `DevModels` (for the developer activity models), `TextModels` (for the text models), and `Regressors` (for the regression models). Moreoever, it contains the dependency files which are `act_requirements.txt`, `ak_requirements.txt`, and `text_requirements.txt`.
-- `Predictions`: Contains the raw prediction files generated during the model evaluation.
-- `Results`: Contains the summary of the results (i.e., MAE, percentage improvement, Wilcoxon p-value with associated significant code, and A12 effect size) for the different approaches across the different projects for the two regression tasks. Also, it contains the raw results (i.e., MAE).
-- `Scripts`: Contains two subfolders, `Data` and `Modeling`. The `Data` folder contains the scripts used for data collection and extraction, while the `Modeling` folder contains the scripts used for data preprocessing, model training, and model evaluation.
+- **Dataset**: Contains datasets used in the study, divided into folders based on features utilized:
+    - `existing`: Existing approach
+    - `sprint2vec`: Our approach
+    - `onlysprint`: ALT 1
+    - `onlytabular`: ALT 2
+    - `sprintissue`: ALT 3
+    - `sprintdev`: ALT 4
+    - `sprint2vecnotext`: ALT 5
+    
+    Each subfolder (except `existing` and `onlysprint`) contains:
+    - `productivity`: Data for productivity regression task
+    - `quality_impact`: Data for quality impact regression task
 
-* Other from above, the directory includes `Sprint2Vec_Config.xlsx` which is the best configuration of `sprint2vec` for each case, and `model_training_diagram.png` which is the diagram of the model training process.
+- **Models**: Contains trained models for different approaches across projects, organized into subfolders:
+    - `DevModels`: Developer activity models
+    - `TextModels`: Text models
+    - `Regressors`: Regression models
+    
+    Dependency files:
+    - `act_requirements.txt`
+    - `ak_requirements.txt`
+    - `text_requirements.txt`
+
+- **Evaluation Results**: Includes summary files (`Productivity.pdf` and `Quality.pdf`) with experimental results like MAE, percentage improvement, Wilcoxon p-value, and A12 effect size for various approaches across projects. Also contains:
+    - `Evaluation Results`: Raw evaluation results (MAE)
+    - `Raw Errors`: Error files for raw and absolute errors during evaluation
+    - `Predictions`: Raw prediction files during evaluation
+
+- **Scripts**: Contains two subfolders:
+    - `Data`: Scripts for data collection and extraction
+    - `Modeling`: Scripts for data preprocessing, model training, and evaluation
+
+Additional Files:
+- `Sprint2Vec_Config.xlsx`: Best configuration of `sprint2vec` for each case of project and task
+- `model_training_diagram.png`: Diagram of the sprint2vec training process
 
 ## Getting Started
-- Create vitual environment and install the required packages using the following command:
-```
-pip install -r Scripts/act_requirements.txt
-pip install -r Scripts/ak_requirements.txt
-pip install -r Scripts/text_requirements.txt
-```
-Note that the `act_requirements.txt` is for the developer activity models, `ak_requirements.txt` is for the regression models, and `text_requirements.txt` is for the text models.
+- **Create Virtual Environments and Install Required Packages:**
 
-- Setup GitHub APIs and SQL database.
+    Create vitual environments and install the required packages seperately using the following command:
+    ```bash
+    pip install -r Scripts/act_requirements.txt
+    pip install -r Scripts/ak_requirements.txt
+    pip install -r Scripts/text_requirements.txt
+    ```
+    > Note that the `act_requirements.txt` is for the developer activity models, `ak_requirements.txt` is for the regression models, and `text_requirements.txt` is for the text models.
 
-- Run the scripts in the `Data` folder to collect and extract the data to store in the database. The scripts are divided into two subfolders, `DataCollection` and `DataExtraction` for data collection and data extraction, respectively.
+- **Setup JIRA APIs, SQL Database, and Workspace:**
 
-- Run the scripts in the `Modeling` folder to preprocess the data, train the models, and evaluate the models.
+    Before proceeding, make sure to set up the required steps (e.g., registering for the JIRA accound and getting an access token) for JIRA APIs and a SQL database to suit your requirements. Additionally, ensure you have a suitable workspace configured for your project pipeline.
+
+- **Data Collection and Extraction:**
+
+    Customize the scripts within the Data folder to include your access token for the APIs, database credentials, and workspace specifications. These modifications are necessary to collect and extract data accurately and store it in the database.
+
+    The scripts are segregated into two subfolders:
+
+    - `DataCollection`: Contains scripts for data collection.
+    - `DataExtraction`: Contains scripts for data extraction.
+
+    Once customized, execute the scripts to initiate the data collection and extraction processes. For example, you can run the following command to collect the list of boards available in the specified project:
+    ```bash
+    python DataCollection/GetRapidBoard.py
+    ```
+    and the following command to extract the attributes of the boards:
+    ```bash
+    python DataExtraction/MainInfo/ExtractBoardAttribute.py
+    ```
+    > Note that the data collection and extraction process may take a significant amount of time, depending on the size of the project.
+
+- **Model Training and Evaluation:**
+
+    Execute the scripts in the `Modeling` folder to preprocess the data, train the models, and evaluate the models.
+
+*These steps will help you set up your environment and execute the necessary processes to work with the provided data and models.*
 
 ## Authors
 - Morakot Choetkiertikul
