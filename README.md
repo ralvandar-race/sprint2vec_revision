@@ -181,7 +181,18 @@ Additional Files:
 
 - **Model Training and Evaluation:**
 
-    Execute the scripts in the `Modeling` folder to preprocess the data, train the models, and evaluate the models.
+    This process consists of three main components: data preprocessing, feature construction, and modeling. Below are the key scripts involved:
+
+    - **Data Preprocessing**: Scripts like `LoadData.py`, `PreprocessData.py`, and `SplitData.py` are utilized. Some scripts may require customization based on your database and workspace configurations.
+
+    - **Feature Construction**: Scripts such as `PrepSprint2Vec.py` are involved in constructing features.
+
+    - **Modeling**: Scripts like `ActLSTM.py`, `TrainActRNN.py`, and `akregressor.py` are used for modeling. 
+    
+    Once customized, execute the scripts in the Modeling folder to preprocess the data, train the models, and evaluate them. This is primarily done by running the `run_*.py` files. For example, you can run the following command to load, preprocess, and split the data:
+    ```bash
+    python Modeling/run_data.py
+    ```
 
 *These steps will help you set up your environment and execute the necessary processes to work with the provided data and models.*
 
@@ -190,5 +201,13 @@ Additional Files:
 - Peerachai Banyongrakkul
 - Chaiyong Ragkhitwetsagul
 - Suppawong Tuarob
-- Thanwadee Sunetnanta
 - Hoa Khanh Dam
+- Thanwadee Sunetnanta
+
+## Acknowledgment
+This work was financially supported by the Office of the Permanent Secretary, Ministry of Higher Education, Science, Research and Innovation (Grant No. RGNS 64-164).
+
+## Citation
+If you use the code, data or models in this repository, please cite the following paper:
+```
+```
