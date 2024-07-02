@@ -95,18 +95,22 @@ Iterative approaches, like Agile Scrum are commonly adopted to enhance the softw
 ├── Scripts
 │   ├── Data
 │   │   ├── DataCollection
-│   │   └── DataExtraction
-│   │       ├── DeveloperFurtherInfo
-│   │       ├── IssueFurtherInfo
-│   │       ├── SprintFurtherInfo
-│   │       └── MainInfo
+│   │   ├── DataExtraction
+│   │   │   ├── DeveloperFurtherInfo
+│   │   │   ├── IssueFurtherInfo
+│   │   │   ├── SprintFurtherInfo
+│   │   │   └── MainInfo
+│   │   └── Utility
 │   ├── act_requirements.txt
 │   ├── ak_requirements.txt
 │   └── text_requirements.txt
 ├── Sprint2Vec_Config.xlsx
 ├── model_training_diagram.png
-└── readme.md
+└── README.md
 ```
+
+## Requirements
+This project is written in Python and requires the version 3.7 or higher. 
 
 ## Contents
 - **Dataset**: Contains datasets used in the study, divided into folders based on features utilized:
@@ -158,16 +162,42 @@ Additional Files:
 
 - **Setup JIRA APIs, SQL Database, and Workspace:**
 
-    Before proceeding, make sure to set up the required steps (e.g., registering for the JIRA accound and getting an access token) for JIRA APIs and a SQL database to suit your requirements. Additionally, ensure you have a suitable workspace configured for your project pipeline.
+    Before proceeding, make sure to set up the required steps (e.g., registering for the JIRA account and getting an access token, see more on the [Jira REST API](https://developer.atlassian.com/cloud/jira/platform/rest/v2/intro/) document) for JIRA APIs and a SQL database to suit your requirements. Additionally, ensure you have a suitable workspace configured for your project pipeline.
 
 - **Data Collection and Extraction:**
 
-    Customize the scripts within the Data folder to include your access token for the APIs, database credentials, and workspace specifications. These modifications are necessary to collect and extract data accurately and store it in the database.
+    Customize the scripts within the `Data` folder to include your access token for the APIs, database credentials, and workspace specifications. These modifications are necessary to collect and extract data accurately and store it in the database. For example,
+    ```python
+    path = "<file_path>".format(folder, repo, issueKey)
+    ```
+    `<file_path>` should be replaced with your actual file path where the data will be stored.
 
-    The scripts are segregated into two subfolders:
+    ```python
+    repo = RepoConfig("apache", "issues.apache.org/jira", "<username>:<password>", "12310293")
+    ```
+    `<username>:<password>` should be replaced with your credentials (i.e., username and password)
 
-    - `DataCollection`: Contains scripts for data collection.
-    - `DataExtraction`: Contains scripts for data extraction.
+    ```python
+    db = DBConfig("<host>", "<port>", "<user>", "<password>", repo, "<data_folder>")
+    ```
+    `<host>`, `<port>`, `<user>`, `<password>`, and `<data_folder>` should be replaced with your database credentials and the path of data folder.
+
+    The scripts are segregated into three subfolders:
+
+    - `DataCollection`: Contains scripts for data collection. This includes 
+        - [GetActivityStream.py](Scripts/Data/DataCollection/GetActivityStream.py) is used to collect the activity stream of developers.
+        - [GetBoard.py](Scripts/Data/DataCollection/GetBoard.py) is used to collect the list of boards available in the specified project.
+        - [GetBoardDetail.py](Scripts/Data/DataCollection/GetBoardDetail.py) is used to collect the attributes of the boards.
+        - [GetRapidBoard.py](Scripts/Data/DataCollection/GetRapidBoard.py) is used to collect the list of boards available in the specified project.
+        - [GetSprintIssue.py](Scripts/Data/DataCollection/GetSprintIssue.py) is used to collect the issues with comments, changelogs, and description in the specified sprint.
+        - [GetTeammemberIssue.py](Scripts/Data/DataCollection/GetTeammemberIssue.py) is used to collect the issues assigned to the specified team member.
+    - `DataExtraction`: Contains scripts for data extraction. There are four subfolders:
+        - [`DeveloperFurtherInfo`](Scripts/Data/DataExtraction/DeveloperFurtherInfo): Contains scripts for extracting further information about developers and store it in the database.
+        - [`IssueFurtherInfo`](Scripts/Data/DataExtraction/IssueFurtherInfo): Contains scripts for extracting further information about issues and store it in the database.
+        - [`SprintFurtherInfo`](Scripts/Data/DataExtraction/SprintFurtherInfo): Contains scripts for extracting further information about sprints and store it in the database.
+        - [`MainInfo`](Scripts/Data/DataExtraction/MainInfo): Contains scripts for extracting the main information about developers, issues, and sprints, including the target variables and store it in the database.
+
+    - `Utility`: Contains utility scripts for database, jira api, workspace configurations, and helpful functions.
 
     Once customized, execute the scripts to initiate the data collection and extraction processes. For example, you can run the following command to collect the list of boards available in the specified project:
     ```bash
@@ -183,13 +213,66 @@ Additional Files:
 
     This process consists of three main components: data preprocessing, feature construction, and modeling. Below are the key scripts involved:
 
-    - **Data Preprocessing**: Scripts like `LoadData.py`, `PreprocessData.py`, and `SplitData.py` are utilized. Some scripts may require customization based on your database and workspace configurations.
+    - **Data Preprocessing**: Scripts like `LoadData.py`, `PreprocessData.py`, and `SplitData.py` are utilized.
+        - [LoadData.py](Scripts/Modeling/LoadData.py): Loads the data from the database. Execute the following command:
 
-    - **Feature Construction**: Scripts such as `PrepSprint2Vec.py` are involved in constructing features.
+            ```bash
+            python LoadData.py <project_name>
+            ```
+            For example, to load the data for the Apache project, run the following command:
+            ```bash
+            python LoadData.py apache
+            ```
 
-    - **Modeling**: Scripts like `ActLSTM.py`, `TrainActRNN.py`, and `akregressor.py` are used for modeling. 
+        - [SplitData.py](Scripts/Modeling/SplitData.py): Split the loaded data into train/validation/test sets. Execute the following command:
+
+            ```bash
+            python SplitData.py <project_name>
+            ```
+            For example, to split the data for the Apache project, run the following command:
+            ```bash
+            python SplitData.py apache
+            ```
+
+        - [PreprocessData.py](Scripts/Modeling/PreprocessData.py): Preprocess the data for modeling. Execute the following command:
+
+            ```bash
+            python PreprocessData.py <project_name>
+            ```
+            For example, to preprocess the data for the Apache project, run the following command:
+            ```bash
+            python PreprocessData.py apache
+            ```
+
+        Some scripts may require customization based on your database and workspace configurations. For example, 
+        ```python
+        connection = pymysql.connect(
+            host="<host_name>",
+            port="<port>",
+            user="<username>",
+            passwd="<password>",
+            database=repo,
+            ...
+        )
+        ```
+        `<host_name>`, `<port>`, `<username>`, `<password>`, and `<repo>` should be replaced with the database configurations and credentials.
+
+    - **Feature Construction**: Scripts like `Prep*.py` are used to construct features for modeling, such as [PrepSprint2vec.py](Scripts/Modeling/PrepSprint2vec.py) for our approach (i.e., Sprint2Vec), [PrepExisting.py](Scripts/Modeling/PrepExisting.py) for the existing approach, [PrepOnlySprint.py](Scripts/Modeling/PrepOnlySprint.py) for ALT 1, [PrepOnlyTabular.py](Scripts/Modeling/PrepOnlyTabular.py) for ALT 2, [PrepSprintIssue.py](Scripts/Modeling/PrepSprintIssue.py) for ALT 3, [PrepSprintDev.py](Scripts/Modeling/PrepSprintDev.py) for ALT 4, and [PrepSprint2vecNoText.py](Scripts/Modeling/PrepSprint2vecNoText.py) for ALT 5. You can execute the scripts by:
+
+        ```bash
+        python Prep*.py <following_arguments>
+        ```
+        you can run the following command to construct features for Sprint2Vec that requires the project name, the text type, the developer activity type, the RNN type for the activity model, the activation dimension for the activity model, and the pooling type as arguments:
+
+        ```bash
+        python PrepSprint2vec.py apache bow full lstm 16 mean
+        ```
+        This means that the script will construct features for the Apache project using the Bag-of-Words (BoW) text type, full developer activity type, LSTM RNN type for the activity model, 16 activation dimensions for the activity model, and mean pooling type.
+        > Note that the arguments may vary based on the script and the approach.
+
+    - **Modeling & Evaluation**: Scripts like `ActLSTM.py`, `ActGRU.py`, and `TrainActRNN.py` are used for training the RNN-based developer activity models, while `akregressor.py` are used for training downstream regressors. 
     
-    Once customized, execute the scripts in the Modeling folder to preprocess the data, train the models, and evaluate them. This is primarily done by running the `run_*.py` files. For example, you can run the following command to load, preprocess, and split the data:
+    It is worth to note that you can execute the scripts in the Modeling folder to preprocess the data, train the models, and evaluate them. This is primarily done by running the `run_*.py` files. For example, you can run the following command to load, preprocess, and split the data:
     ```bash
     python Modeling/run_data.py
     ```
@@ -208,6 +291,6 @@ Additional Files:
 This work was financially supported by the Office of the Permanent Secretary, Ministry of Higher Education, Science, Research and Innovation (Grant No. RGNS 64-164).
 
 ## Citation
-If you use the code, data or models in this repository, please cite the following paper:
+If you use the concept, code, data or models in this repository, please cite the following paper:
 ```
 ```
