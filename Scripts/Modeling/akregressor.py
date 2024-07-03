@@ -6,6 +6,9 @@ import tensorflow.keras.backend as K
 import tensorflow as tf
 
 def ak_model():
+    """
+    AutoKeras regressor model with normalization, dense block and regression head
+    """
     input_node = ak.Input()
     normalize_node = ak.Normalization()(input_node)
     dense_node = ak.DenseBlock()(normalize_node)

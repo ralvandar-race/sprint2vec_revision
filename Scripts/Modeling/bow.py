@@ -33,6 +33,9 @@ def strip_list_noempty(lst):
     return [item for item in new_list if item != '']
 
 def clean_punctuation(text): 
+    """
+    Remove punctuation from text
+    """
     tokens = tokenizer.tokenize(text)
     punctuation_filtered = []
     regex = re.compile('[%s]' % re.escape(punctuations))
@@ -42,6 +45,9 @@ def clean_punctuation(text):
     return ' '.join(map(str, filtered_list))
 
 def clean_text(text):
+    """
+    Main function to clean text
+    """
     # lower
     text = text.lower()
     # Remove HTML tags
@@ -87,6 +93,7 @@ start_min_df = 1
 end_min_df = int(issue_train_df[issue_train_df['text'] != ''].shape[0] * 0.1)
 num_empty_train = issue_train_df[issue_train_df['text'] == ''].shape[0]
 
+# find the optimal min_df
 while start_min_df < end_min_df:
     mid_min_df = (start_min_df + end_min_df) // 2
     bow = CountVectorizer(max_features=None, lowercase=True, min_df=mid_min_df)
@@ -99,6 +106,7 @@ while start_min_df < end_min_df:
     else:
         end_min_df = mid_min_df
 
+# transform text to bow
 result_min_df = start_min_df - 1
 final_bow = CountVectorizer(max_features=None, lowercase=True, min_df=result_min_df)
 final_bow.fit(issue_train_df['text'])

@@ -22,6 +22,10 @@ except:
     sys.exit()
 
 def average_with_random_nosie_model(train, test):
+    """
+    Average model with random noise that predicts 
+    the average value of the training set with random noise
+    """
     prediction = np.mean(train)
     sd = np.std(train)
     set_seeds(SEED)
@@ -30,12 +34,18 @@ def average_with_random_nosie_model(train, test):
     return predicted
 
 def random_model(train, test):
+    """
+    Random model that predicts a random value from the training set
+    """
     set_seeds(SEED)
     possible_values = list(train)
     predicted = [random.choice(possible_values) for i in range(len(test))]
     return predicted
 
 def linear_regression_model(x, y):
+    """
+    Linear regression model (OLS)
+    """
     model = LinearRegression()
     model.fit(x, y)
     return model

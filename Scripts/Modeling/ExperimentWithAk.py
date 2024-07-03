@@ -63,6 +63,7 @@ input_node, output_node = ak_model()
 early_stopping, model_checkpoint, lr_scheduler, tensorboard = init_callbacks(repo, approach, approach_name_clf, task)
 objective = kt.Objective(tuning_objective, direction="min")
 
+# define model
 clf = ak.AutoModel(
     inputs=input_node, 
     outputs=output_node, 
@@ -75,6 +76,7 @@ clf = ak.AutoModel(
     max_consecutive_failed_trials=10
 )
 
+# fit model
 history = clf.fit(
     X_train.values,
     y_train,
@@ -94,7 +96,7 @@ data_dict = {
     'test': {'X': X_test.values, 'y': y_test}
 }
 
-# predict
+# predict, dump predictions and evaluate performance
 print("Predicting...")
 for data_set in data_dict.keys():
     y_pred = best_model.predict(data_dict[data_set]['X'])

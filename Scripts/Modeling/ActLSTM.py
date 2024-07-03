@@ -32,11 +32,17 @@ def set_seeds(SEED):
     os.environ['PYTHONHASHSEED'] = str(SEED)
 
 def perplexity(y_true, y_pred):
+    """
+    Perplexity metric.
+    """
     cross_entropy = K.sparse_categorical_crossentropy(y_true, y_pred)
     ppl = K.exp(cross_entropy)
     return ppl
 
 def init_callbacks(repo, output_dim, rnn_type):
+    """
+    Initialize callbacks for training
+    """
     if not os.path.exists('Act Models/{}/{}'.format(repo, output_dim)):
         os.makedirs('Act Models/{}/{}'.format(repo, output_dim))
     if not os.path.exists('Act Models/{}/{}/{}'.format(repo, output_dim, rnn_type)):
@@ -45,7 +51,7 @@ def init_callbacks(repo, output_dim, rnn_type):
         os.makedirs('Act Models/{}/{}/{}/logs'.format(repo, output_dim, rnn_type))
     if not os.path.exists('Act Models/{}/{}/{}/checkpoints'.format(repo, output_dim, rnn_type)):
         os.makedirs('Act Models/{}/{}/{}/checkpoints'.format(repo, output_dim, rnn_type))
-
+    
     early_stopping = EarlyStopping(
         monitor='val_perplexity',
         min_delta=0.01,
@@ -75,7 +81,6 @@ def init_callbacks(repo, output_dim, rnn_type):
         mode='auto',
         min_delta=0.0001
     )
-    # csv_logger = CSVLogger('Act Models/{}/{}/logs/lstm_.csv'.format(repo, output_dim), append=False, separator='\t')
     tensorboard = TensorBoard(log_dir='Act Models/{}/{}/{}/logs'.format(repo, output_dim, rnn_type), histogram_freq=1, write_graph=True)
     
     return [early_stopping, model_checkpoint, lr_scheduler, tensorboard]
@@ -96,20 +101,21 @@ class MyLSTM(kt.HyperModel):
     def build(self, hp):
         set_seeds(SEED)
 
-        shared_embedding = hp.Choice('shared_embedding', values=[True, False])
-        num_layers = hp.Int('num_layers', min_value=1, max_value=2, step=1)
+        shared_embedding = hp.Choice('shared_embedding', values=[True, False]) # Whether to use shared embedding layer
+        num_layers = hp.Int('num_layers', min_value=1, max_value=2, step=1) # Number of layers
 
+        # Define the dropout rates for the encoder and decoder
         en_dropouts = []
         de_dropouts = []
         for i in range(num_layers):
             en_dropouts.append(hp.Float(f'en_dropout_{i+1}', min_value=0.0, max_value=0.6, step=0.2))
             de_dropouts.append(hp.Float(f'de_dropout_{i+1}', min_value=0.0, max_value=0.6, step=0.2))
 
-        activation_choice = hp.Choice('activation', values=['relu', 'tanh'])
-        optimizer_choice = hp.Choice('optimizer', values=['adam', 'rmsprop'])
-        learning_rate = hp.Choice('learning_rate', values=[0.1, 0.01, 0.001])
+        activation_choice = hp.Choice('activation', values=['relu', 'tanh']) # Activation function
+        optimizer_choice = hp.Choice('optimizer', values=['adam', 'rmsprop']) # Optimizer
+        learning_rate = hp.Choice('learning_rate', values=[0.1, 0.01, 0.001]) # Learning rate
 
-        # encoder
+        # define the encoder sequence
         encoder_inputs = Input(shape=(self.length,), name='encoder_inputs')
         if shared_embedding:
             shared_embedding = Embedding(input_dim=self.input_dim, output_dim=self.output_dim , mask_zero=True, name='shared_embedding')
@@ -161,6 +167,9 @@ class MyLSTM(kt.HyperModel):
         )
 
 def save_best_model(tuner, repo, output_dim, rnn_type):
+    """
+    Save the best model and its hyperparameters
+    """
     best_model = tuner.get_best_models(num_models=1)[0]
     best_model.save('Act Models/{}/{}/{}/best'.format(repo, output_dim, rnn_type))
     best_model.save_weights('Act Models/{}/{}/{}/best_weights'.format(repo, output_dim, rnn_type))
@@ -176,9 +185,15 @@ def save_best_model(tuner, repo, output_dim, rnn_type):
     return best_model
 
 def load_best_model(repo, output_dim, rnn_type):
+    """
+    Load the best model
+    """
     return models.load_model('Act Models/{}/{}/{}/best'.format(repo, output_dim, rnn_type), custom_objects={'perplexity': perplexity})
 
 def save_performance(repo, output_dim, rnn_type, train_loss, train_ppl, valid_loss, valid_ppl, test_loss, test_ppl):
+    """
+    Save the performance of the model
+    """
     if not os.path.exists('Act Models/{}/{}/{}/best_performance.csv'.format(repo, output_dim, rnn_type)):
         with open('Act Models/{}/{}/{}/best_performance.csv'.format(repo, output_dim, rnn_type), 'w') as f:
             f.write('train_loss,train_ppl,valid_loss,valid_ppl,test_loss,test_ppl\n')

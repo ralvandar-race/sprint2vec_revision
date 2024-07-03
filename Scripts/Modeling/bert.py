@@ -53,6 +53,9 @@ tokenizer = BertTokenizer.from_pretrained(tokenizer_name, do_lower_case=do_lower
 bert_embedder = TFBertModel.from_pretrained(pretrain_name, from_pt=from_pt, config=config_path)
 
 def bert_embedding(row):
+    """
+    Get the embedding of the text using last hidden state
+    """
     outputs = bert_embedder(row['text']['input_ids'], row['text']['attention_mask'])
     last_hidden_state = outputs.last_hidden_state
     avg_pool = tf.reduce_mean(last_hidden_state, 1)
@@ -64,7 +67,7 @@ sprint_train_df, sprint_valid_df, sprint_test_df, \
 issue_train_df, issue_valid_df, issue_test_df, \
 developer_train_df, developer_valid_df, developer_test_df = Utility.read_prep_dataset(repo)
 
-# find text length
+# preprocess text and find text fixed length
 print("Preprocessing and Finding text length...")
 issue_train_df['text'] = issue_train_df['text'].apply(lambda x: preprocessor(x))
 issue_valid_df['text'] = issue_valid_df['text'].apply(lambda x: preprocessor(x))
