@@ -265,7 +265,7 @@ Additional Files:
         - [sow2v.py](Scripts/Modeling/sow2v.py) is for SO_Word2Vec.
         - [bert.py](Scripts/Modeling/bert.py) is for BERT<sub>BASE_UNCASED</sub>, BERTOverflow, and seBERT.
 
-        You can extract feature for textual description using BERTOverflow on Apache by:
+        For instance, you can extract feature for textual description using BERTOverflow on Apache by:
 
         ```bash
         python bert.py apache bertoverflow
@@ -313,7 +313,7 @@ Additional Files:
         python ExperimentWithAk.py apache productivity sprint2vec_tfidf_mean
         ```
 
-        For more detail of all the approaches, see [run_experimentwithak](Scripts/Modeling/run_experimentwithak.py)
+        For more detail of all the approaches, see [run_experimentwithak.py](Scripts/Modeling/run_experimentwithak.py)
 
         In the matter of baselines (in RQ1), [baseline.py](Scripts/Modeling/baseline.py) is used. For example, you can execute the following command to develop a linear regression model for the productivity task on the Apache project:
 
