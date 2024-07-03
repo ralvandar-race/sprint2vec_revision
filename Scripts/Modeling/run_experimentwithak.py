@@ -60,33 +60,31 @@ pools = [
 ]
 
 
-# approaches = [
-#     'existing',
-#     'onlysprint'
-# ] + [
-#     'onlytabular_{}'.format(pool)
-#     for pool in pools
-# ] 
-# + [
-#     'sprintissue_{}_{}'.format(text, pool)
-#     for text in texts
-#     for pool in pools
-# ] + [
-#     'sprintdev_{}_{}'.format(act, pool)
-#     for act in acts
-#     for pool in pools
-# ] + [
-#     'sprint2vecnotext_{}_{}'.format(act, pool)
-#     for act in acts
-#     for pool in pools
-# ] 
-
-# approaches = [
-#     'sprint2vec_{}_{}_{}'.format(text, act, pool)
-#     for text in texts
-#     for act in acts
-#     for pool in pools #"maxabs", "minabs", "sum"
-# ]
+approaches = [
+    'existing',
+    'onlysprint'
+] + [
+    'onlytabular_{}'.format(pool)
+    for pool in pools
+] 
++ [
+    'sprintissue_{}_{}'.format(text, pool)
+    for text in texts
+    for pool in pools
+] + [
+    'sprintdev_{}_{}'.format(act, pool)
+    for act in acts
+    for pool in pools
+] + [
+    'sprint2vecnotext_{}_{}'.format(act, pool)
+    for act in acts
+    for pool in pools
+] + [
+    'sprint2vec_{}_{}_{}'.format(text, act, pool)
+    for text in texts
+    for act in acts
+    for pool in pools
+]
 
 tasks = [
     'productivity',

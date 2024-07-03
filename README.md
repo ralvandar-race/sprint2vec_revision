@@ -101,6 +101,7 @@ Iterative approaches, like Agile Scrum are commonly adopted to enhance the softw
 │   │   │   ├── SprintFurtherInfo
 │   │   │   └── MainInfo
 │   │   └── Utility
+│   ├── Modeling
 │   ├── act_requirements.txt
 │   ├── ak_requirements.txt
 │   └── text_requirements.txt
@@ -257,7 +258,22 @@ Additional Files:
         ```
         `<host_name>`, `<port>`, `<username>`, `<password>`, and `<repo>` should be replaced with the database configurations and credentials.
 
-    - **Feature Construction**: Scripts like `Prep*.py` are used to construct features for modeling, such as [PrepSprint2vec.py](Scripts/Modeling/PrepSprint2vec.py) for our approach (i.e., Sprint2Vec), [PrepExisting.py](Scripts/Modeling/PrepExisting.py) for the existing approach, [PrepOnlySprint.py](Scripts/Modeling/PrepOnlySprint.py) for ALT 1, [PrepOnlyTabular.py](Scripts/Modeling/PrepOnlyTabular.py) for ALT 2, [PrepSprintIssue.py](Scripts/Modeling/PrepSprintIssue.py) for ALT 3, [PrepSprintDev.py](Scripts/Modeling/PrepSprintDev.py) for ALT 4, and [PrepSprint2vecNoText.py](Scripts/Modeling/PrepSprint2vecNoText.py) for ALT 5. You can execute the scripts by:
+    - **Feature Construction**: For textual feature extraction, `bow.py`, `tfidf.py`, `sow2v.py`, and `bert.py` are used.
+
+        - [bow.py](Scripts/Modeling/bow.py) is for BoW.
+        - [tfidf.py](Scripts/Modeling/tfidf.py) is for TF-IDF.
+        - [sow2v.py](Scripts/Modeling/sow2v.py) is for SO_Word2Vec.
+        - [bert.py](Scripts/Modeling/bert.py) is for BERT<sub>BASE_UNCASED</sub>, BERTOverflow, and seBERT.
+
+        You can extract feature for textual description using BERTOverflow on Apache by:
+
+        ```bash
+        python bert.py apache bertoverflow
+        ```
+
+        However, you can use [run_text.py](Scripts/Modeling/run_text.py) to execute all of them in once.
+
+        Moreover, scripts like `Prep*.py` are used to construct features for modeling, such as [PrepSprint2vec.py](Scripts/Modeling/PrepSprint2vec.py) for our approach (i.e., Sprint2Vec), [PrepExisting.py](Scripts/Modeling/PrepExisting.py) for the existing approach, [PrepOnlySprint.py](Scripts/Modeling/PrepOnlySprint.py) for ALT 1, [PrepOnlyTabular.py](Scripts/Modeling/PrepOnlyTabular.py) for ALT 2, [PrepSprintIssue.py](Scripts/Modeling/PrepSprintIssue.py) for ALT 3, [PrepSprintDev.py](Scripts/Modeling/PrepSprintDev.py) for ALT 4, and [PrepSprint2vecNoText.py](Scripts/Modeling/PrepSprint2vecNoText.py) for ALT 5. You can execute the scripts by:
 
         ```bash
         python Prep*.py <following_arguments>
@@ -268,16 +284,47 @@ Additional Files:
         python PrepSprint2vec.py apache bow full lstm 16 mean
         ```
         This means that the script will construct features for the Apache project using the Bag-of-Words (BoW) text type, full developer activity type, LSTM RNN type for the activity model, 16 activation dimensions for the activity model, and mean pooling type.
+
         > Note that the arguments may vary based on the script and the approach.
 
-    - **Modeling & Evaluation**: Scripts like `ActLSTM.py`, `ActGRU.py`, and `TrainActRNN.py` are used for training the RNN-based developer activity models, while `akregressor.py` are used for training downstream regressors. 
+    - **Modeling & Evaluation**: [TrainActRNN.py](Scripts/Modeling/TrainActRNN.py) is used for training and evaluating the RNN-based developer activity models. You can use the following command to run:
+
+        ```bash
+        python TrainActRNN.py <project_name> <rnn_type> <output_dim>
+        ```
+    
+        For example:
+
+        ```bash
+        python TrainActRNN.py apache lstm 32
+        ```
+
+        This means that LSTM with the output dimension of 32 is trained for Apache. However, you can use [run_trainact.py](Scripts/Modeling/run_trainact.py) to execute all of configurations in once.
+        
+        For training and evaluating downstream regressors, [ExperimentWithAk.py](Scripts/Modeling/ExperimentWithAk.py) is used. You can use the following command to execute:
+
+        ```bash
+        python ExperimentWithAk.py <project_name> <task> <approach_name>
+        ```
+    
+        For example, you train and evaluate a regressor using sprint2vec with tfidf and mean pooling for the productivity prediction on Apache by:
+
+        ```bash
+        python ExperimentWithAk.py apache productivity sprint2vec_tfidf_mean
+        ```
+
+        For more detail of all the approaches, see [run_experimentwithak](Scripts/Modeling/run_experimentwithak.py)
+
+        In the matter of baselines (in RQ1), [baseline.py](Scripts/Modeling/baseline.py) is used. For example, you can execute the following command to develop a linear regression model for the productivity task on the Apache project:
+
+        ```bash
+        python baseline.py apache productivity linear
+        ```
     
     It is worth to note that you can execute the scripts in the Modeling folder to preprocess the data, train the models, and evaluate them. This is primarily done by running the `run_*.py` files. For example, you can run the following command to load, preprocess, and split the data:
     ```bash
     python Modeling/run_data.py
     ```
-
-*These steps will help you set up your environment and execute the necessary processes to work with the provided data and models.*
 
 ## Authors
 - Morakot Choetkiertikul
