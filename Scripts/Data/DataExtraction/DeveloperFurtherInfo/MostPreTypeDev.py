@@ -10,6 +10,9 @@ import Utility.JSONUtility as Utility
 import Utility.RepoConfig as Repo
 
 def extractMostPre():
+    """
+    Extract the most preferred issue type of the developer
+    """
    
     addCol = "ALTER TABLE `sprint_teammember_insight` ADD `most_prefer_type` varchar(255) NOT NULL AFTER `no_comment`;"
     try:

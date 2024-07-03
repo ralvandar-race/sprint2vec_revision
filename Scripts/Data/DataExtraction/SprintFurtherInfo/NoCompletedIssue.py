@@ -14,6 +14,9 @@ import Utility.DBConfig as DB
 
 
 def extractCompletedIssue():
+    """
+    Extract the number of completed issue in each sprint
+    """
 
     try:
         addColumn = "ALTER TABLE sprint_feature ADD no_completed_issue int(11)"

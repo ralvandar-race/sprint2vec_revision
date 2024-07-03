@@ -22,7 +22,9 @@ def main():
 
 
 def collectBoard():
-   # maxResult = 50
+    """
+    Collect the board ID from the repository
+    """
     print("Collect Board ID...")
 
     json_data = Utility.loadRapidBoardJSON(repo.name, db.folder)   # Modified
@@ -62,6 +64,9 @@ def collectBoard():
 
 
 def getSprintList(): 
+    """
+    Collect the list of sprints from the board
+    """
     print("Collect Board Detail...")
     select = "SELECT board_id FROM board"
     cursor.execute(select)
@@ -79,6 +84,9 @@ def getSprintList():
 
 
 def getSprint():
+    """
+    Collect the sprint details from the board
+    """
     print("Collect Sprints from Board...")
     select = "SELECT board_id FROM board"
     cursor.execute(select)

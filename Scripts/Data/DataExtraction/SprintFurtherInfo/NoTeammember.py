@@ -9,6 +9,9 @@ import Utility.JSONUtility as Utility
 import Utility.RepoConfig as Repo
 
 def extractTotalNoTeammember():
+    """
+    Extract the total number of team member in the sprint
+    """
     addCol = "ALTER TABLE `sprint_feature` ADD `no_teammember` INT(11) NOT NULL AFTER `no_issue`;"
     try:
         cursor.execute(addCol)

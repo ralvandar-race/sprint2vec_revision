@@ -30,6 +30,9 @@ ADD `filterCanBeFixed` TINYINT(1) NULL DEFAULT NULL AFTER `filterIsOrderedByRank
 
 
 def GetBoardDetail():
+    """
+    Collect the board detail from RapidBoard.json
+    """
     print("Collect Board Feature from RapidBoard.json...")
     select = "SELECT `id`, board_id FROM board"
     cursor.execute(select)

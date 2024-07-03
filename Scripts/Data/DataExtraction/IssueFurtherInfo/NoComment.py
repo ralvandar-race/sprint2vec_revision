@@ -9,6 +9,9 @@ import Utility.JSONUtility as Utility
 import Utility.RepoConfig as Repo
 
 def countComment():
+    """
+    Count the number of comments in the issue
+    """
 
     addCol = "ALTER TABLE `sprint_issue_feature_insight` ADD `no_comment` TINYINT NOT NULL AFTER `change_priority`;"
     try:

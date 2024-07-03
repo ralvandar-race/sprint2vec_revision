@@ -12,6 +12,9 @@ import Utility.DBConfig as DB
 
 
 def collectRapidBoard():
+    """
+    Collect the rapid board (list of boards) from the repository
+    """
     print("Collect Rapid Board...")
     url = "https://{}/rest/greenhopper/1.0/rapidviews/list/".format(repo.domain)
 

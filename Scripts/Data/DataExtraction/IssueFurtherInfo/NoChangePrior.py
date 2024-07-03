@@ -10,6 +10,9 @@ import Utility.RepoConfig as Repo
 
 
 def countChange():
+    """
+    Count the number of changes in the priority of the issue
+    """
 
     addCol = "ALTER TABLE `sprint_issue_feature_insight` ADD `change_priority` INT(11) NOT NULL AFTER `no_labels`;"
     try:

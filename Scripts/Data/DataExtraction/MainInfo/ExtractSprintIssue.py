@@ -12,6 +12,9 @@ import Utility.DBConfig as DB
 import Utility.RepoConfig as Repo
 
 def getIssueFromSprint():
+    """
+    Collect Issues from Sprint
+    """
     print("Collect Issues from Sprint...")
     
     select = "SELECT board_id, sprint_id FROM sprint_feature"
@@ -29,6 +32,7 @@ def getIssueFromSprint():
             print("ERROR: {} [boardID: {}, sprintID: {}]".format(e, boardID, sprintID))
             continue
 
+        # collect the completed issues during the sprint
         completedIssueList = contents['completedIssues']
         for issue in completedIssueList:
             issueKey = issue['key']
@@ -53,6 +57,7 @@ def getIssueFromSprint():
             except pymysql.Error as e:
                 print("ERROR: {}".format(e))
 
+        # collect the incompleted issues during the sprint
         incompletedIssueList = contents['issuesNotCompletedInCurrentSprint']
         for issue in incompletedIssueList:
             issueKey = issue['key']
@@ -77,6 +82,7 @@ def getIssueFromSprint():
             except pymysql.Error as e:
                 print("ERROR: {}".format(e))
 
+        # collect the punted issues during the sprint
         puntedIssueList = contents['puntedIssues']
         for issue in puntedIssueList:
             issueKey = issue['key']
@@ -101,6 +107,7 @@ def getIssueFromSprint():
             except pymysql.Error as e:
                 print("ERROR: {}".format(e))
 
+        # collect the completed issues in another sprint
         CompletedInAnotherIssueList = contents['issuesCompletedInAnotherSprint']
         for issue in CompletedInAnotherIssueList:
             issueKey = issue['key']
@@ -125,6 +132,7 @@ def getIssueFromSprint():
             except pymysql.Error as e:
                 print("ERROR: {}".format(e))
 
+        # collect the added issues during the sprint
         addedIssueList  = contents['issueKeysAddedDuringSprint']
         for issue in addedIssueList:
             try:

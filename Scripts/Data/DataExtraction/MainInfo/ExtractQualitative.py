@@ -12,6 +12,9 @@ import Utility.RepoConfig as Repo
 import Utility.DBConfig as DB
 
 def main():
+    """
+    Main function to extract the qualitative quality of the issue (reopen ratio)
+    """
     print("Try to add `reopen_ratio` and `qualitative_quality` column ...")
     addColumn = "ALTER TABLE `sprint_feature` ADD `reopen_ratio` FLOAT;"
     try:

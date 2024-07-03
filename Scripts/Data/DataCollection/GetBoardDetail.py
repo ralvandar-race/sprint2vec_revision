@@ -14,6 +14,9 @@ import Utility.RepoConfig as Repo
 
 
 def GetBoardDetail():
+    """
+    Get the board detail of the repository
+    """
     print("Collect Board Detail...")
     select = "SELECT board_id FROM board"
     cursor.execute(select)
@@ -23,7 +26,9 @@ def GetBoardDetail():
     for row in result:
         boardID = row['board_id']
         url = "https://{}/rest/agile/1.0/board/{}".format(repo.domain, boardID)
+        # send request to get the board detail
         json_data = createRequest(url)
+        # store the board detail into the database
         try:
             insertDetail = "INSERT INTO board_feature(id, board_id, name, url, type, collectedTime) VALUES(%s, %s, %s, %s, %s, %s)"
             inputPara = (

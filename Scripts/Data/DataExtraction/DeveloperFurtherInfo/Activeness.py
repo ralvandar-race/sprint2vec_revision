@@ -9,6 +9,9 @@ import Utility.JSONUtility as Utility
 import Utility.RepoConfig as Repo
 
 def extractNoIssue():
+    """
+    Extract the number of issues that the developer has done
+    """
     addCol = "ALTER TABLE `sprint_teammember_insight` ADD `developer_activeness` INT(11) NOT NULL AFTER `no_distinct_action`;"
     try:
         cursor.execute(addCol)
@@ -35,10 +38,13 @@ def extractNoIssue():
         )
         cursor.execute(update,inputPara)
         connection.commit()
-        # print("update {} {} {} into DB successfully".format(boardID, sprintID, username))
+        print("update {} {} {} into DB successfully".format(boardID, sprintID, username))
 
 
 def extractTotal():
+    """
+    Extract the total number of issues that the team member has done
+    """
     addCol = "ALTER TABLE `sprint_feature_insight` ADD `no_teammember_issue` INT(11) NULL DEFAULT 0"
     try:
         cursor.execute(addCol)

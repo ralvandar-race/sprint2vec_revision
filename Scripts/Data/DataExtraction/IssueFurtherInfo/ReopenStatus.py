@@ -13,6 +13,9 @@ import Utility.RepoConfig as Repo
 
 
 def collectReopenIss():
+    """
+    Collect the number of reopen issue in the sprint
+    """
 
     print("Try to create new column [no_reopen] ...")
     # Add no_reopen column

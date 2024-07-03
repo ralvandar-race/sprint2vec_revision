@@ -16,10 +16,14 @@ import Utility.RepoConfig as Repo
 
 
 def extractSeqAction():
+    """
+    Extract the sequence of actions along with issue types of the developer
+    """
 
     lemmatizer = WordNetLemmatizer()
     stemmer = PorterStemmer()
 
+    # list of words to be removed from the action
     reList = ['to', 'on', 'of', 'between']
     vowels = ['a', 'e', 'i', 'o', 'u']
     special_cases = ['backward', 'backport', 'complet', 'compat']
@@ -57,27 +61,31 @@ def extractSeqAction():
         )
         cursor.execute(select, inputPara)
         result2 = cursor.fetchall()
+
         # reverse actions (past to present)
         for row2 in list(reversed(result2)):
             raw_action = row2['action'].lower()
             raw_action = raw_action.split(' to ')[0]
             raw_action = raw_action.split(" '")[0]
             raw_action = raw_action.split()
+            # remove the last word if it is in the reList: ['to', 'on', 'of', 'between']
             if raw_action[len(raw_action)-1] in reList:
                 del raw_action[len(raw_action) - 1]
+            # remove special characters and digits
             raw_action = [re.sub('[^A-Za-z0-9]+', '',word) for word in raw_action if not word.isdigit() and not word == 'the' and not word == 'one']
             raw_action = [lemmatizer.lemmatize(w) for w in raw_action]
             raw_action = ' '.join([stemmer.stem(w) for w in raw_action])
             raw_type = row2['type'].lower()
+            # new action
             if not "{}:{}".format(raw_action, raw_type) in mappings.keys():
-                issue_type = [letter for letter in raw_type if letter not in vowels and letter.isalnum()]
+                issue_type = [letter for letter in raw_type if letter not in vowels and letter.isalnum()] # remove vowels
                 issue_type = ''.join(issue_type)
-                action = ''.join([word[0:5] if word in special_cases else word[:3] for word in raw_action.split()])
-                action = action + issue_type
-                actionSeq = actionSeq + " " + action
-                mappings["{}:{}".format(raw_action, raw_type)] = action
-                count_dict["{}:{}".format(raw_action, raw_type)] = 1
-            else:
+                action = ''.join([word[0:5] if word in special_cases else word[:3] for word in raw_action.split()]) # take the first 3 characters of each word
+                action = action + issue_type # concatenate the action with the issue type
+                actionSeq = actionSeq + " " + action # concatenate the action to create the sequence
+                mappings["{}:{}".format(raw_action, raw_type)] = action # store the mapping
+                count_dict["{}:{}".format(raw_action, raw_type)] = 1 # store the count
+            else: # existing action
                 actionSeq = actionSeq + " " + mappings["{}:{}".format(raw_action, raw_type)]
                 count_dict["{}:{}".format(raw_action, raw_type)] += 1
             actionSeq = actionSeq.strip()

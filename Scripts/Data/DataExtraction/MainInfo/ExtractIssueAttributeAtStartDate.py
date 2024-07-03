@@ -14,6 +14,9 @@ import Utility.RepoConfig as Repo
 
 
 def extractIssueFeature(featureTable, insightTable, clTable):
+    """
+    Extract the issue feature at the sprint start date from the feature table and insert into the insight table
+    """
     print("Create table: " + insightTable + " duplicated from " + featureTable + " ...")
 
     select_max = "SELECT MAX(`no_component`) as maxCom FROM " + featureTable

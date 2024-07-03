@@ -11,7 +11,9 @@ import Utility.DBConfig as DB
 import Utility.RepoConfig as Repo
 
 def main():
-    # selectKey = "SELECT DISTINCT(issue_key) FROM sprint_teammember_issue WHERE issue_key NOT IN (SELECT issue_key FROM collected_key)"
+    """
+    Main function to collect the issues associated with the team members
+    """
     selectKey = "SELECT DISTINCT(issue_key) FROM sprint_teammember_issue_new WHERE issue_key NOT IN (SELECT issue_key FROM collected_key)"
     cursor.execute(selectKey)
     result = cursor.fetchall()
@@ -21,10 +23,13 @@ def main():
         check = 0
         try:
             print("\n")
+            # collect the detail of the issue
             collectDetail(currentKey, db.folder)
             time.sleep(0.001)
+            # collect the comments of the issue
             collectComment(currentKey, db.folder)
             time.sleep(0.001)
+            # collect the change log of the issue
             collectChangeLog(currentKey, db.folder)
             time.sleep(0.001)
             check = 1
@@ -39,6 +44,9 @@ def main():
 
 
 def storeDB(currentKey):
+    """
+    Store the issue key into the database
+    """
     insertKey = "INSERT INTO collected_key(`issue_key`, `collectedTime`) VALUES(%s, %s)"
     inputPara = (
         currentKey,
@@ -73,16 +81,25 @@ def createRequest(url):
 
 
 def collectDetail(issueKey, folder):
+    """
+    Collect the detail of the issue
+    """
     url = "https://{}/rest/api/2/issue/{}".format(repo.domain, issueKey)
     json_data = createRequest(url)
     writeFile(json_data, "detail", issueKey, folder, repo.name)
 
 def collectComment(issueKey, folder):
+    """
+    Collect the comments of the issue
+    """
     url = "https://{}/rest/api/2/issue/{}/comment".format(repo.domain, issueKey)
     json_data = createRequest(url)
     writeFile(json_data, "comment", issueKey, folder, repo.name)
 
 def collectChangeLog(issueKey, folder):
+    """
+    Collect the change logs of the issue
+    """
     url = "https://{}/rest/api/2/issue/{}?expand=changelog".format(repo.domain, issueKey)
     json_data = createRequest(url)
     writeFile(json_data, "changeLog", issueKey, folder, repo.name)

@@ -20,6 +20,9 @@ import Utility.RepoConfig as Repo
 
 
 def main():
+    """
+    Main function to get the activity stream of the users in the sprint team
+    """
     selectUsers = "SELECT board_id, sprint_id, username FROM sprint_teammember ORDER BY board_id ;"
     cursor.execute(selectUsers)
     result = cursor.fetchall()
@@ -40,23 +43,24 @@ def main():
 
         dateTimeCode = '%Y-%m-%d %H:%M:%S'
         
+        # Get the activity stream of the user
         for sprint in result:
             startDate = str(sprint['start_date'])
             utcEpoch = int(calendar.timegm(time.strptime(startDate, dateTimeCode))) * 1000
-            try:
+            try: # Get the activity stream of the user for the last 3 months
                 nextMonth = monthsBefore(sprint['start_date'], 3)
                 utcEpochBefore = int(calendar.timegm(time.strptime(nextMonth, dateTimeCode))) * 1000
                 url = "https://{}/activity?streams=user+IS+{}&streams=update-date+BETWEEN+{}+{}&startAt=0&maxResults=1000".format(repo.domain, username, utcEpochBefore, utcEpoch)
                 print(url, currentBoardID, currentSprintID)
                 xml_data = createRequest(url)
             except:
-                try:
+                try: # Get the activity stream of the user for the last 2 months
                     nextMonth = monthsBefore(sprint['start_date'], 2)
                     utcEpochBefore = int(calendar.timegm(time.strptime(nextMonth, dateTimeCode))) * 1000
                     url = "https://{}/activity?streams=user+IS+{}&streams=update-date+BETWEEN+{}+{}&startAt=0&maxResults=1000".format(repo.domain, username, utcEpochBefore, utcEpoch)
                     print(url, currentBoardID, currentSprintID)
                     xml_data = createRequest(url)
-                except:
+                except: # Get the activity stream of the user for the last 1 month
                     nextMonth = monthsBefore(sprint['start_date'], 1)
                     utcEpochBefore = int(calendar.timegm(time.strptime(nextMonth, dateTimeCode))) * 1000
                     url = "https://{}/activity?streams=user+IS+{}&streams=update-date+BETWEEN+{}+{}&startAt=0&maxResults=1000".format(repo.domain, username, utcEpochBefore, utcEpoch)
@@ -66,6 +70,9 @@ def main():
 
 
 def monthsBefore(sourcedate, num_months):
+    """
+    Get the date of the month before the source date
+    """
     print("Original Date: {}".format(sourcedate))
     end_date = sourcedate + relativedelta(months=-num_months)
     months_before = datetime.datetime(end_date.year, end_date.month, end_date.day, end_date.hour, end_date.minute, end_date.second)
@@ -75,6 +82,9 @@ def monthsBefore(sourcedate, num_months):
 
 
 def createRequest(url):
+    """
+    Create a request to get the activity stream of the user
+    """
 
     try:
         response = requests.request(
@@ -90,7 +100,10 @@ def createRequest(url):
 
 
 def writeFile(data, folder, repo, user, boardID, sprintID):
-    path = "<file_path>"
+    """
+    Write the activity stream of the user to a file
+    """
+    path = "<file_path>".format(folder, repo, boardID, sprintID, user)
 
     try:
         with open(path, 'w',  encoding="utf-8") as xmlFile:

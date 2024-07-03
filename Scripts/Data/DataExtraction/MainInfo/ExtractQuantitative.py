@@ -13,6 +13,9 @@ import Utility.DBConfig as DB
 
 
 def main():
+    """
+    Main function to extract the quantitative quality of the issue (complete ratio)
+    """
     print("Try to add `complete_ratio` and `achievement` column ...")
     addColumn = "ALTER TABLE `sprint_feature` ADD `complete_ratio` FLOAT;"
     try:

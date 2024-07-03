@@ -12,7 +12,7 @@ def createRepo():
     while True:
         try:
             choice = int(input("Enter the number to select the repository\n[1] Apache\n[2] Jenkins\n[3] Jira\n[4] Spring\n[5] Talendforge\n"))
-            if choice <= 0 and choice > 11:
+            if choice <= 0 and choice > 5:
                 print("Try again!!!")
             else:
                 if choice == 1:

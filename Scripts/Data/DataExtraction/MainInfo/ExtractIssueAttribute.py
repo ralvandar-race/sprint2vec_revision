@@ -63,6 +63,9 @@ CREATE TABLE `sprint_teammember_issue_feature` (
 """
 
 def extractIssueFeature(choice, issueTable, featureTable):
+    """
+    Extract the issue feature from the issue table
+    """
     print("Collect Issue Feature...")
     
     #------------- START Duplicate sprint_issue table to sprint_issue_feature table -------------#

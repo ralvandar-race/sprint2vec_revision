@@ -9,7 +9,9 @@ import Utility.JSONUtility as Utility
 import Utility.RepoConfig as Repo
 
 def main():
-
+    """
+    Main function to extract number of distinct actions of the developer
+    """
     create_table_sql = "CREATE TABLE IF NOT EXISTS `sprint_teammember_insight` SELECT * FROM `sprint_teammember`;"
     try:
         cursor.execute(create_table_sql)
@@ -43,7 +45,7 @@ def main():
         )
         cursor.execute(update,inputPara)
         connection.commit()
-        # print("update {} {} {} into DB successfully".format(boardID, sprintID, username))
+        print("update {} {} {} into DB successfully".format(boardID, sprintID, username))
 
 
 
