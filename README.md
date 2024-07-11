@@ -1,13 +1,17 @@
-# Sprint2Vec: a deep characterization of sprints in iterative software development
+# 🏃‍♂️ Sprint2Vec: a deep characterization of sprints in iterative software development
 
 This repository contains the code, data, models, and experimental results for the paper "Sprint2Vec: a deep characterization of sprints in iterative software development" submitted to IEEE Transactions on Software Engineering (TSE).
 
-## Abstract
+## 📝 Abstract
 
 Iterative approaches, like Agile Scrum are commonly adopted to enhance the software development process. However, challenges such as schedule and budget overruns still persist in many software projects. Several approaches employ machine learning techniques, particularly classification, to facilitate decision-making in iterative software development. Existing approaches often concentrate on characterizing a sprint to predict solely productivity. We introduce Sprint2Vec, which leverages three aspects of sprint information -- sprint attributes, issue attributes, and the developers involved in a sprint, to comprehensively characterize it for predicting both productivity and quality outcomes of the sprints. Our approach combines traditional feature extraction techniques with automated deep learning-based unsupervised feature learning techniques. We utilize methods like Long Short-Term Memory (LSTM) to enhance our feature learning process. This enables us to learn features from unstructured data, such as textual descriptions of issues and sequences of developer activities. We conducted an evaluation of our approach on two regression tasks: predicting the deliverability (i.e., the amount of work delivered from a sprint) and quality of a sprint (i.e., the amount of delivered work that requires rework). The evaluation results on five well-known open-source projects (Apache, Atlassian, Jenkins, Spring, and Talendforge) demonstrate our approach's superior performance compared to baseline and alternative approaches.
 
-## Directory Structure
-```
+## 📂 Directory Structure
+
+<details>
+<summary>Click to expand</summary>
+
+```plaintext
 .
 ├── Dataset
 │   ├── existing
@@ -110,11 +114,12 @@ Iterative approaches, like Agile Scrum are commonly adopted to enhance the softw
 ├── model_training_diagram.png
 └── README.md
 ```
+</details>
 
-## Requirements
-This project is written in Python and requires the version 3.7 or higher. 
+## 📦 Requirements
+This project is written in Python 🐍 and requires the version 3.7 or higher. 
 
-## Contents
+## 📚 Contents
 - **Dataset**: Contains datasets used in the study, divided into folders based on features utilized:
     - `existing`: Existing approach
     - `sprint2vec`: Our approach
@@ -151,7 +156,7 @@ Additional Files:
 - `Sprint2Vec_Config.xlsx`: Best configuration of `sprint2vec` for each case of project and task
 - `model_training_diagram.png`: Diagram of the sprint2vec training process
 
-## Getting Started
+## 🚀 Getting Started
 - **Create Virtual Environments and Install Required Packages:**
 
     Create vitual environments and install the required packages seperately using the following command:
@@ -160,8 +165,8 @@ Additional Files:
     pip install -r Scripts/ak_requirements.txt
     pip install -r Scripts/text_requirements.txt
     ```
-    > [!Note]
-    > The `act_requirements.txt` is for the developer activity models, `ak_requirements.txt` is for the regression models, and `text_requirements.txt` is for the text models.
+> [!IMPORTANT]
+> The `act_requirements.txt` is for the developer activity models, `ak_requirements.txt` is for the regression models, and `text_requirements.txt` is for the text models.
 
 - **Setup JIRA APIs, SQL Database, and Workspace:**
 
@@ -210,8 +215,8 @@ Additional Files:
     ```bash
     python DataExtraction/MainInfo/ExtractBoardAttribute.py
     ```
-    > [!Note]
-    > The data collection and extraction process may take a significant amount of time, depending on the size of the project.
+> [!WARNING]
+> The data collection and extraction process may take a significant amount of time, depending on the size of the project.
 
 - **Model Training and Evaluation:**
 
@@ -288,8 +293,7 @@ Additional Files:
         ```
         This means that the script will construct features for the Apache project using the Bag-of-Words (BoW) text type, full developer activity type, LSTM RNN type for the activity model, 16 activation dimensions for the activity model, and mean pooling type.
 
-        > [!Note]
-        > The arguments may vary based on the script and the approach.
+        ℹ️ Note that the arguments may vary based on the script and the approach.
 
     - **Modeling & Evaluation**: [TrainActRNN.py](Scripts/Modeling/TrainActRNN.py) is used for training and evaluating the RNN-based developer activity models. You can use the following command to run:
 
@@ -324,13 +328,13 @@ Additional Files:
         ```bash
         python baseline.py apache productivity linear
         ```
-    > [!TIP]
-    > You can execute the scripts in the Modeling folder to preprocess the data, train the models, and evaluate them. This is primarily done by running the `run_*.py` files. For example, you can run the following command to load, preprocess, and split the data:
-    > ```bash
-    > python Modeling/run_data.py
-    > ```
+> [!TIP]
+> You can execute the scripts in the Modeling folder to preprocess the data, train the models, and evaluate them. This is primarily done by running the `run_*.py` files. For example, you can run the following command to load, preprocess, and split the data:
+> ```bash
+> python Modeling/run_data.py
+> ```
 
-## Authors
+## 👥 Authors
 - Morakot Choetkiertikul
 - Peerachai Banyongrakkul
 - Chaiyong Ragkhitwetsagul
@@ -338,10 +342,10 @@ Additional Files:
 - Hoa Khanh Dam
 - Thanwadee Sunetnanta
 
-## Acknowledgment
+## 🙏 Acknowledgment
 This work was financially supported by the Office of the Permanent Secretary, Ministry of Higher Education, Science, Research and Innovation (Grant No. RGNS 64-164).
 
-## Citation
+## 📖 Citation
 If you use the concept, code, data or models in this repository, please cite the following paper:
 ```
 ```
