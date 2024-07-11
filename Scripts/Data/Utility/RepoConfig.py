@@ -9,6 +9,12 @@ class RepoConfig():
         self.storypoint1 = storypoint1
 
 def createRepo():
+    """
+    Create a new RepoConfig object to store the repository information
+    <username:password>: The username and password used to login to the repository
+
+    :return: The RepoConfig object
+    """
     while True:
         try:
             choice = int(input("Enter the number to select the repository\n[1] Apache\n[2] Jenkins\n[3] Jira\n[4] Spring\n[5] Talendforge\n"))
@@ -16,6 +22,7 @@ def createRepo():
                 print("Try again!!!")
             else:
                 if choice == 1:
+                    # name, domain, userpass, field number of story point
                     repo = RepoConfig("apache", "issues.apache.org/jira", "<username>:<password>", "12310293")
                 elif choice == 2:
                     repo = RepoConfig("jenkins", "issues.jenkins.io", "<username>:<password>", "10332")

@@ -60,7 +60,7 @@ def init_callbacks(repo, output_dim, rnn_type):
         mode='auto',
         baseline=None,
         restore_best_weights=True
-    )
+    ) # Stop training when a monitored quantity has stopped improving.
 
     model_checkpoint = ModelCheckpoint(
         filepath='Act Models/{}/{}/{}'.format(repo, output_dim, rnn_type) + '/checkpoints/model.{epoch:02d}-{val_perplexity:.2f}.h5',
@@ -71,7 +71,7 @@ def init_callbacks(repo, output_dim, rnn_type):
         mode='auto',
         save_freq='epoch',
         options=None
-    )
+    ) # Save the model after every epoch.
 
     lr_scheduler = ReduceLROnPlateau(
         monitor='val_loss',
@@ -86,11 +86,18 @@ def init_callbacks(repo, output_dim, rnn_type):
     return [early_stopping, model_checkpoint, lr_scheduler, tensorboard]
 
 def rnn2feature(vecs, mask):
-    mask = np.expand_dims(mask, axis=-1)
-    vecs = vecs * mask
-    vecs = np.sum(vecs, axis=1)
-    vecs = vecs / np.sum(mask, axis=1)
-    return vecs
+    """
+    Convert the RNN output to feature vector
+    
+    :param vecs: The RNN output
+    :param mask: The mask
+    :return: The feature vector
+    """
+    mask = np.expand_dims(mask, axis=-1) # (batch_size, seq_len, 1)
+    vecs = vecs * mask # (batch_size, seq_len, output_dim)
+    vecs = np.sum(vecs, axis=1) # (batch_size, output_dim)
+    vecs = vecs / np.sum(mask, axis=1) # (batch_size, output_dim)
+    return vecs 
 
 class MyLSTM(kt.HyperModel):
     def __init__(self, input_dim, length, output_dim):

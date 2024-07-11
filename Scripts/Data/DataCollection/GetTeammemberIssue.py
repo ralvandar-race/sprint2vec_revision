@@ -59,6 +59,13 @@ def storeDB(currentKey):
 
 
 def createRequest(url):
+    """
+    Send a request to the given URL
+    
+    <url>: The URL to send the request to
+    """
+
+    # <api_token>: your api token for the repository
     apiToken = "<api_token>"
     headers = { 
         "Accept": "application/json", 

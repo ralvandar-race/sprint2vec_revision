@@ -41,6 +41,9 @@ print("shape of sprint valid: ", sprint_dict['valid'].shape)
 print("shape of sprint test: ", sprint_dict['test'].shape)
 
 def explode_feats(df, col_name):
+    """
+    Explode the features in the list (used for text and rnn_feats)
+    """
     exploded_df = pd.DataFrame(df[col_name].tolist(), index=df.index)
     df.drop(col_name, axis=1, inplace=True)
     return df.join(exploded_df.add_prefix(col_name + '_'))

@@ -71,6 +71,7 @@ tuner = MyRandomSearch(
     # overwrite=True
 )
 
+# train the model
 set_seeds(SEED)
 tuner.search(
     x=[x_en_train, x_de_train],

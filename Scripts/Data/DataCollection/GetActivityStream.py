@@ -41,6 +41,7 @@ def main():
         cursor.execute(selectStartDate, inputPara)
         result = cursor.fetchall()
 
+        # date time format
         dateTimeCode = '%Y-%m-%d %H:%M:%S'
         
         # Get the activity stream of the user

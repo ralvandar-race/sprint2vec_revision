@@ -16,6 +16,9 @@ def ak_model():
     return input_node, output_node
 
 def init_callbacks(repo, approach, approach_name, task):
+    """
+    Initialize callbacks for training regressor model
+    """
     if not os.path.exists('Regressors/{}/{}/{}/{}/logs'.format(repo, approach, approach_name, task)):
         os.makedirs('Regressors/{}/{}/{}/{}/logs'.format(repo, approach, approach_name, task))
     if not os.path.exists('Regressors/{}/{}/{}/{}/checkpoints'.format(repo, approach, approach_name, task)):
@@ -29,7 +32,7 @@ def init_callbacks(repo, approach, approach_name, task):
         mode='min',
         baseline=None,
         restore_best_weights=True
-    )
+    ) # Stop training when a monitored quantity has stopped improving.
 
     model_checkpoint = ModelCheckpoint(
         filepath='Regressors/{}/{}/{}/{}'.format(repo, approach, approach_name, task) + '/checkpoints/model.{epoch:02d}-{val_mae:.4f}.h5',
@@ -40,7 +43,7 @@ def init_callbacks(repo, approach, approach_name, task):
         mode='min',
         save_freq='epoch',
         options=None
-    )
+    ) # Save the model after every epoch.
 
     lr_scheduler = ReduceLROnPlateau(
         monitor='val_loss',

@@ -31,7 +31,7 @@ selectSprintDeliver = "SELECT \
     FROM sprint_feature sfi \
     WHERE EXISTS (SELECT * FROM sprint_issue si WHERE sfi.board_id = si.board_id AND sfi.sprint_id = si.sprint_id AND si.addedDuringSprint = 0 AND si.exist_in_website = 1) \
     AND NOT sfi.complete_ratio = 0\
-    ORDER BY sfi.`start_date` ASC;" 
+    ORDER BY sfi.`start_date` ASC;"
     
 selectIssueDeliver = "SELECT \
     sif.board_id, \
@@ -73,6 +73,11 @@ selectDeveloperDeliver = "SELECT sti.`board_id`, sti.`sprint_id`, sti.`no_distin
     ORDER BY sf.start_date ASC "
 
 
+# connect to the database
+# <host_name>: the host name of the database
+# <port>: the port of the database
+# <username>: the username to connect to the database
+# <password>: the password associated with the username
 connection = pymysql.connect(
     host="<host_name>",
     port="<port>",
@@ -93,59 +98,6 @@ if repo == 'apache':
     sprint_df.drop(sprint_df[sprint_df.no_issue > 100].index, inplace=True)
 
 headers = [col[0] for col in cursor.description]
-
-complete_ratio = sprint_df['complete_ratio'].tolist()
-complete_ratio.sort()
-reopen_ratio = sprint_df['reopen_ratio'].tolist()
-reopen_ratio.sort()
-
-first_complete_index = round(0.33 * len(complete_ratio))
-second_complete_index = round(0.66 * len(complete_ratio))
-first_complete_threshold = complete_ratio[first_complete_index - 1]
-second_complete_threshold = complete_ratio[second_complete_index - 1]
-print("First Complete Threshold: {}".format(first_complete_threshold))
-print("Second Complete Threshold: {}".format(second_complete_threshold))
-
-first_reopen_index = round(0.20 * len(reopen_ratio))
-second_reopen_index = round(0.40 * len(reopen_ratio))
-third_reopen_index = round(0.60 * len(reopen_ratio))
-first_reopen_threshold = reopen_ratio[first_reopen_index - 1]
-second_reopen_threshold = reopen_ratio[second_reopen_index - 1]
-third_reopen_threshold = reopen_ratio[third_reopen_index - 1]
-print("First Reopen Threshold: {}".format(first_reopen_threshold))
-print("Second Reopen Threshold: {}".format(second_reopen_threshold))
-print("Third Reopen Threshold: {}".format(third_reopen_threshold))
-
-productivity = []
-quality_impact = []
-for index, row in sprint_df.iterrows():
-    if row['complete_ratio'] < first_complete_threshold:
-        productivity.append('low')
-    elif row['complete_ratio'] > second_complete_threshold:
-        productivity.append('high')
-    else:
-        productivity.append('balanced')
-    if row['reopen_ratio'] <= first_reopen_threshold:
-        quality_impact.append('no')
-    elif row['reopen_ratio'] > first_reopen_threshold and row['reopen_ratio'] <= second_reopen_threshold:
-        quality_impact.append('minor')
-    elif row['reopen_ratio'] > second_reopen_threshold and row['reopen_ratio'] <= third_reopen_threshold:
-        quality_impact.append('moderate')
-    else:
-        quality_impact.append('major')
-
-sprint_df['productivity'] = productivity
-sprint_df['quality_impact'] = quality_impact
-sprint_df.head()
-
-# save threshold as text file
-print("save threshold ...")
-with open('Data/{}_threshold.txt'.format(repo), 'w') as f:
-    f.write('First Prod Threshold: {}\n'.format(first_complete_threshold))
-    f.write('Second Prod Threshold: {}\n'.format(second_complete_threshold))
-    f.write('First Qual Threshold: {}\n'.format(first_reopen_threshold))
-    f.write('Second Qual Threshold: {}\n'.format(second_reopen_threshold))
-    f.write('Third Qual Threshold: {}\n'.format(third_reopen_threshold))
 
 print("save data ...")
 # save sprint_df as csv file

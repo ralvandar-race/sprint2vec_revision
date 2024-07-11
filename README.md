@@ -102,6 +102,7 @@ Iterative approaches, like Agile Scrum are commonly adopted to enhance the softw
 │   │   │   └── MainInfo
 │   │   └── Utility
 │   ├── Modeling
+│   │   └── Utility
 │   ├── act_requirements.txt
 │   ├── ak_requirements.txt
 │   └── text_requirements.txt
@@ -252,7 +253,7 @@ Additional Files:
             port="<port>",
             user="<username>",
             passwd="<password>",
-            database=repo,
+            database="<repo>",
             ...
         )
         ```

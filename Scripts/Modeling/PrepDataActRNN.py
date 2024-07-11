@@ -13,6 +13,14 @@ from Utility import Utility
 
 
 def adjust_length(seqList, length):
+    """
+    adjust the length of the sequence by padding <PAD>
+
+    :param seqList: list of sequences
+    :param length: length of the sequence
+
+    :return: list of sequences
+    """
     count = 0
     for seq in seqList:
         if len(seq) == 0:
@@ -26,6 +34,12 @@ def adjust_length(seqList, length):
     return seqList
 
 def tokenize_train(seq_of_act):
+    """
+    tokenize the sequence of actions for the train data
+    
+    :param seq_of_act: list of sequence of actions
+    :return: length, sequence dictionary, and list of sequences
+    """
     seqList = list()
     noSamples = len(seq_of_act)
     sumL = 0
@@ -59,6 +73,15 @@ def tokenize_train(seq_of_act):
     return length, seqDict, seqList
 
 def tokenize(seq_of_act, length, seq_dict):
+    """
+    tokenize the sequence of actions
+    
+    :param seq_of_act: list of sequence of actions
+    :param length: length of the sequence
+    :param seq_dict: sequence dictionary
+
+    :return: list of sequences and list of lengths
+    """
     seqList = list()
     
     for seq in seq_of_act:
@@ -82,6 +105,14 @@ def tokenize(seq_of_act, length, seq_dict):
     return seqList, ls
 
 def prepare_seq(seq_list, lengths):
+    """
+    prepare the sequence for the model
+    
+    :param seq_list: list of sequences
+    :param lengths: list of lengths
+    
+    :return: encoder input, decoder input, decoder output, and mask
+    """
     no_samples = len(seq_list)
 
     # create input, next input (output), and mask

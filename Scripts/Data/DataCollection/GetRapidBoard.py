@@ -24,6 +24,10 @@ def collectRapidBoard():
 
 
 def createRequest(url): 
+    """
+    Send a request to the given URL
+    <url>: The URL to send the request to
+    """
     # userpass = "username:password"
     userpass = repo.userpass
     encoded = str(base64.b64encode(bytearray(userpass, "utf-8")))

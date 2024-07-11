@@ -70,19 +70,26 @@ unmatching_vocab = dict()
 length = dict()
 
 def embed_text(text):
+    """
+    Embed the text
+    
+    :param text: the text to be embedded
+    """
     tokens = text.split()
     length[len(tokens)] = length.get(len(tokens), 0) + 1
     if text == '':
-        return np.zeros(default_dim)
+        return np.zeros(DEFAULT_DIM)
     vectors = []
     for token in tokens:
         try:
+            # if token in word_vect:
             vectors.append(word_vect[token])
             if token in matching_vocab:
                 matching_vocab[token] += 1
             else:
                 matching_vocab[token] = 1
         except:
+            # append zero vector if token not in word_vect
             vectors.append(np.zeros(DEFAULT_DIM))
             if token in unmatching_vocab:
                 unmatching_vocab[token] += 1

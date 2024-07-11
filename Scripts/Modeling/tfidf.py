@@ -33,6 +33,12 @@ def strip_list_noempty(lst):
     return [item for item in new_list if item != '']
 
 def clean_punctuation(text): 
+    """
+    Remove punctuation from text
+    
+    Args:
+    text: string
+    """
     tokens = tokenizer.tokenize(text)
     punctuation_filtered = []
     regex = re.compile('[%s]' % re.escape(punctuations))
@@ -83,6 +89,7 @@ developer_train_df, developer_valid_df, developer_test_df = Utility.read_prep_da
 for df in [issue_train_df, issue_valid_df, issue_test_df]:
     df['text'] = df['text'].apply(lambda x: clean_text(x))
 
+# find optimal min_df
 start_min_df = 1
 end_min_df = int(issue_train_df[issue_train_df['text'] != ''].shape[0] * 0.1)
 num_empty_train = issue_train_df[issue_train_df['text'] == ''].shape[0]
