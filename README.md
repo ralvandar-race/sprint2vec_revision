@@ -160,7 +160,8 @@ Additional Files:
     pip install -r Scripts/ak_requirements.txt
     pip install -r Scripts/text_requirements.txt
     ```
-    > Note that the `act_requirements.txt` is for the developer activity models, `ak_requirements.txt` is for the regression models, and `text_requirements.txt` is for the text models.
+    > [!Note]
+    > The `act_requirements.txt` is for the developer activity models, `ak_requirements.txt` is for the regression models, and `text_requirements.txt` is for the text models.
 
 - **Setup JIRA APIs, SQL Database, and Workspace:**
 
@@ -209,7 +210,8 @@ Additional Files:
     ```bash
     python DataExtraction/MainInfo/ExtractBoardAttribute.py
     ```
-    > Note that the data collection and extraction process may take a significant amount of time, depending on the size of the project.
+    > [!Note]
+    > The data collection and extraction process may take a significant amount of time, depending on the size of the project.
 
 - **Model Training and Evaluation:**
 
@@ -286,7 +288,8 @@ Additional Files:
         ```
         This means that the script will construct features for the Apache project using the Bag-of-Words (BoW) text type, full developer activity type, LSTM RNN type for the activity model, 16 activation dimensions for the activity model, and mean pooling type.
 
-        > Note that the arguments may vary based on the script and the approach.
+        > [!Note]
+        > The arguments may vary based on the script and the approach.
 
     - **Modeling & Evaluation**: [TrainActRNN.py](Scripts/Modeling/TrainActRNN.py) is used for training and evaluating the RNN-based developer activity models. You can use the following command to run:
 
@@ -321,11 +324,11 @@ Additional Files:
         ```bash
         python baseline.py apache productivity linear
         ```
-    
-    It is worth to note that you can execute the scripts in the Modeling folder to preprocess the data, train the models, and evaluate them. This is primarily done by running the `run_*.py` files. For example, you can run the following command to load, preprocess, and split the data:
-    ```bash
-    python Modeling/run_data.py
-    ```
+    > [!TIP]
+    > You can execute the scripts in the Modeling folder to preprocess the data, train the models, and evaluate them. This is primarily done by running the `run_*.py` files. For example, you can run the following command to load, preprocess, and split the data:
+    > ```bash
+    > python Modeling/run_data.py
+    > ```
 
 ## Authors
 - Morakot Choetkiertikul
