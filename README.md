@@ -166,7 +166,7 @@ Additional Files:
     pip install -r Scripts/text_requirements.txt
     ```
 > [!IMPORTANT]
-> The `act_requirements.txt` is for the developer activity models, `ak_requirements.txt` is for the regression models, and `text_requirements.txt` is for the text models.
+> *The `act_requirements.txt` is for the developer activity models, `ak_requirements.txt` is for the regression models, and `text_requirements.txt` is for the text models.*
 
 - **Setup JIRA APIs, SQL Database, and Workspace:**
 
@@ -216,7 +216,7 @@ Additional Files:
     python DataExtraction/MainInfo/ExtractBoardAttribute.py
     ```
 > [!WARNING]
-> The data collection and extraction process may take a significant amount of time, depending on the size of the project.
+> *The data collection and extraction process may take a significant amount of time, depending on the size of the project.*
 
 - **Model Training and Evaluation:**
 
@@ -253,18 +253,20 @@ Additional Files:
             python PreprocessData.py apache
             ```
 
-        Some scripts may require customization based on your database and workspace configurations. For example, 
-        ```python
-        connection = pymysql.connect(
-            host="<host_name>",
-            port="<port>",
-            user="<username>",
-            passwd="<password>",
-            database="<repo>",
-            ...
-        )
-        ```
-        `<host_name>`, `<port>`, `<username>`, `<password>`, and `<repo>` should be replaced with the database configurations and credentials.
+        > ℹ️ Note: 
+        >
+        > *Some scripts may require customization based on your database and workspace configurations. For example,*
+        > ```python
+        > connection = pymysql.connect(
+        >     host="<host_name>",
+        >     port="<port>",
+        >     user="<username>",
+        >     passwd="<password>",
+        >     database="<repo>",
+        >     ...
+        > )
+        > ```
+        > *`<host_name>`, `<port>`, `<username>`, `<password>`, and `<repo>` should be replaced with the database configurations and credentials.*
 
     - **Feature Construction**: For textual feature extraction, `bow.py`, `tfidf.py`, `sow2v.py`, and `bert.py` are used.
 
@@ -293,7 +295,9 @@ Additional Files:
         ```
         This means that the script will construct features for the Apache project using the Bag-of-Words (BoW) text type, full developer activity type, LSTM RNN type for the activity model, 16 activation dimensions for the activity model, and mean pooling type.
 
-        ℹ️ Note that the arguments may vary based on the script and the approach.
+        > ℹ️ Note:
+        >
+        > *The arguments may vary based on the script and the approach.*
 
     - **Modeling & Evaluation**: [TrainActRNN.py](Scripts/Modeling/TrainActRNN.py) is used for training and evaluating the RNN-based developer activity models. You can use the following command to run:
 
@@ -329,7 +333,7 @@ Additional Files:
         python baseline.py apache productivity linear
         ```
 > [!TIP]
-> You can execute the scripts in the Modeling folder to preprocess the data, train the models, and evaluate them. This is primarily done by running the `run_*.py` files. For example, you can run the following command to load, preprocess, and split the data:
+> *You can execute the scripts in the Modeling folder to preprocess the data, train the models, and evaluate them. This is primarily done by running the `run_*.py` files. For example, you can run the following command to load, preprocess, and split the data:*
 > ```bash
 > python Modeling/run_data.py
 > ```
