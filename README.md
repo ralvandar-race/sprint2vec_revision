@@ -111,7 +111,7 @@ Iterative approaches, like Agile Scrum are commonly adopted to enhance the softw
 │   ├── ak_requirements.txt
 │   └── text_requirements.txt
 ├── Sprint2Vec_Config.xlsx
-├── model_training_diagram.png
+├── Sprint2Vec_Pipeline.png
 └── README.md
 ```
 </details>
@@ -154,7 +154,7 @@ This project is written in Python 🐍 and requires the version 3.7 or higher.
 
 Additional Files:
 - `Sprint2Vec_Config.xlsx`: Best configuration of `sprint2vec` for each case of project and task
-- `model_training_diagram.png`: Diagram of the sprint2vec training process
+- `Sprint2Vec_Pipeline.png`: Pipeline Diagram of the sprint2vec training and predicting process
 
 ## 🚀 Getting Started
 - **Create Virtual Environments and Install Required Packages:**
