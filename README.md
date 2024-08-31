@@ -107,9 +107,7 @@ Iterative approaches, like Agile Scrum are commonly adopted to enhance the softw
 │   │   └── Utility
 │   ├── Modeling
 │   │   └── Utility
-│   ├── act_requirements.txt
-│   ├── ak_requirements.txt
-│   └── text_requirements.txt
+│   └── requirements.txt
 ├── Sprint2Vec_Config.xlsx
 ├── Sprint2Vec_Pipeline.png
 └── README.md
@@ -138,10 +136,8 @@ This project is written in Python 🐍 and requires the version 3.7 or higher.
     - `TextModels`: Text models
     - `Regressors`: Regression models
     
-    Dependency files:
-    - `act_requirements.txt`
-    - `ak_requirements.txt`
-    - `text_requirements.txt`
+    Dependency file:
+    - `requirements.txt`
 
 - **Evaluation Results**: Includes summary files (`Productivity.pdf` and `Quality.pdf`) with experimental results like MAE, percentage improvement, Wilcoxon p-value, and A12 effect size for various approaches across projects. Also contains:
     - `Evaluation Results`: Raw evaluation results (MAE)
@@ -157,16 +153,18 @@ Additional Files:
 - `Sprint2Vec_Pipeline.png`: Pipeline Diagram of the sprint2vec training and predicting process
 
 ## 🚀 Getting Started
-- **Create Virtual Environments and Install Required Packages:**
+- **Create Virtual Environment and Install Required Packages:**
 
-    Create vitual environments and install the required packages seperately using the following command:
+    It is recommended to use a virtual environment to manage dependencies. Follow the appropriate instructions below based on your environment:
+    - Using `venv` (Python's built-in tool): To create a virtual environment, refer to the official [Python documentation](https://docs.python.org/3/library/venv.html).
+    - Using Conda: If you're using Conda, follow the instructions provided in this [Conda guide](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)).
+
+    After creating the virtual environment, activate it and install the required packages by running the following command:
     ```bash
-    pip install -r Scripts/act_requirements.txt
-    pip install -r Scripts/ak_requirements.txt
-    pip install -r Scripts/text_requirements.txt
+    pip install -r Scripts/requirements.txt
     ```
 > [!IMPORTANT]
-> *The `act_requirements.txt` is for the developer activity models, `ak_requirements.txt` is for the regression models, and `text_requirements.txt` is for the text models.*
+> *Ensure that your virtual environment is activated before running the installation command to avoid conflicts with your system-wide packages.*
 
 - **Setup JIRA APIs, SQL Database, and Workspace:**
 
