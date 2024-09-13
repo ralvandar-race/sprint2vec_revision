@@ -1,0 +1,34 @@
+col_name,feat_imp,norm_feat_imp,direction
+i_type_Improvement,0.030349108654854046,1.0,-
+i_priority_Minor,0.012527216182259075,0.4127704811605881,-
+i_priority_Major,0.006978910235826354,0.2299543724724892,-
+s_plan_duration,0.006677161832692581,0.22001179371126714,-
+s_no_teammember,0.006498665321112992,0.21413035206467565,+
+d_most_prefer_type_Bug,0.001343330538856747,0.04426260270552935,+
+s_no_issue,0.001113752667774277,0.03669803553179948,+
+i_fog_index,0.0009892074174774497,0.03259428237999456,-
+i_no_component,0.0009283021046242004,0.03058745860319451,-
+i_type_Bug,0.0007738892289376254,0.02549957027531513,-
+d_no_distinct_action,0.0007283650152647442,0.023999552130116654,+
+d_developer_activeness,0.0003479477727297309,0.011464843224451009,+
+i_no_comments,0.0002631682175539162,0.008671365625488477,-
+d_most_prefer_type_Improvement,0.00022142831163095685,0.007296040030340118,+
+i_no_change_description,0.0002213282065302052,0.0072927415775950934,+
+i_type_Task,0.00018985905734551905,0.006255836357657012,-
+d_no_comment,0.00015307086228950556,0.005043669124859895,+
+d_most_prefer_type_Na,7.956901128638497e-06,0.00026217907152162334,+
+d_most_prefer_type_Epic,0.0,0.0,+
+d_most_prefer_type_Task,0.0,0.0,+
+d_most_prefer_type_Story,0.0,0.0,+
+d_most_prefer_type_New Feature,0.0,0.0,+
+i_no_change_priority,0.0,0.0,+
+i_priority_Trivial,0.0,0.0,+
+i_priority_Highest,0.0,0.0,+
+i_priority_High,0.0,0.0,+
+i_priority_Critical,0.0,0.0,+
+i_priority_Blocker,0.0,0.0,+
+i_type_Story,0.0,0.0,+
+i_type_New Feature,0.0,0.0,+
+i_type_Epic,0.0,0.0,+
+i_no_change_fix,0.0,0.0,+
+i_priority_Medium,0.0,0.0,+

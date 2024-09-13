@@ -15,45 +15,72 @@ Iterative approaches, like Agile Scrum are commonly adopted to enhance the softw
 .
 ├── Dataset
 │   ├── existing
+│   │   └── ...
 │   ├── onlysprint
+│   │   └── ...
 │   ├── onlytabular
 │   │   ├── productivity
+│   │   │   └── ...
 │   │   └── quality_impact
+│   │       └── ...
 │   ├── sprint2vec
 │   │   ├── productivity
+│   │   │   └── ...
 │   │   └── quality_impact
+│   │       └── ...
 │   ├── sprint2vecnotext
 │   │   ├── productivity
+│   │   │   └── ...
 │   │   └── quality_impact
+│   │       └── ...
 │   ├── sprintdev
 │   │   ├── productivity
+│   │   │   └── ...
 │   │   └── quality_impact
+│   │       └── ...
 │   └── sprintissue
 │       ├── productivity
+│       │   └── ...
 │       └── quality_impact
+│           └── ...
 ├── Models
 │   ├── DevModels
 │   │   ├── apache
+│   │   │   └── ...
 │   │   ├── jenkins
+│   │   │   └── ...
 │   │   ├── jira
+│   │   │   └── ...
 │   │   ├── spring
+│   │   │   └── ...
 │   │   └── talendforge
+│   │       └── ...
 │   ├── Regressors
 │   │   ├── apache
 │   │   │   ├── productivity
+│   │   │   │   └── ...
 │   │   │   └── quality_impact
+│   │   │       └── ...
 │   │   ├── jenkins
 │   │   │   ├── productivity
+│   │   │   │   └── ...
 │   │   │   └── quality_impact
+│   │   │       └── ...
 │   │   ├── jira
 │   │   │   ├── productivity
+│   │   │   │   └── ...
 │   │   │   └── quality_impact
+│   │   │       └── ...
 │   │   ├── spring
 │   │   │   ├── productivity
+│   │   │   │   └── ...
 │   │   │   └── quality_impact
+│   │   │       └── ...
 │   │   └── talendforge
-│   │       ├── productivity
-│   │       └── quality_impact
+│   │   │   ├── productivity
+│   │   │   │   └── ...
+│   │   │   └── quality_impact
+│   │   │       └── ...
 │   └── TextModels
 │       ├── BERTOverflow
 │       │   └── readme.txt
@@ -61,52 +88,96 @@ Iterative approaches, like Agile Scrum are commonly adopted to enhance the softw
 │       │   └── readme.txt
 │       ├── BoW
 │       │   ├── apache
+│       │   │   └── ...
 │       │   ├── jenkins
+│       │   │   └── ...
 │       │   ├── jira
+│       │   │   └── ...
 │       │   ├── spring
+│       │   │   └── ...
 │       │   └── talendforge
+│       │       └── ...
 │       ├── SO_W2V
 │       │   └── readme.txt
 │       ├── TFIDF
 │       │   ├── apache
+│       │   │   └── ...
 │       │   ├── jenkins
+│       │   │   └── ...
 │       │   ├── jira
+│       │   │   └── ...
 │       │   ├── spring
+│       │   │   └── ...
 │       │   └── talendforge
+│       │       └── ...
 │       └── seBERT
 │           └── readme.txt
 ├── Results
 │   ├── Evaluation Results
 │   │   ├── apache
+│   │   │   └── ...
 │   │   ├── jenkins
+│   │   │   └── ...
 │   │   ├── jira
+│   │   │   └── ...
 │   │   ├── spring
+│   │   │   └── ...
 │   │   └── talendforge
+│   │       └── ...
 │   ├── Raw Errors
-│   │   ├── apache
-│   │   ├── jenkins
-│   │   ├── jira
-│   │   ├── spring
-│   │   └── talendforge
+│   │   ├── apache
+│   │   │   └── ...
+│   │   ├── jenkins
+│   │   │   └── ...
+│   │   ├── jira
+│   │   │   └── ...
+│   │   ├── spring
+│   │   │   └── ...
+│   │   └── talendforge
+│   │       └── ...
 │   ├── Predictions
-│   │   ├── apache
-│   │   ├── jenkins
-│   │   ├── jira
-│   │   ├── spring
-│   │   └── talendforge
+│   │   ├── apache
+│   │   │   └── ...
+│   │   ├── jenkins
+│   │   │   └── ...
+│   │   ├── jira
+│   │   │   └── ...
+│   │   ├── spring
+│   │   │   └── ...
+│   │   └── talendforge
+│   │       └── ...
+│   ├── Feature Analysis  
+│   │   ├── shap_feat_imp_df
+│   │   │   └── ...
+│   │   ├── shap_group_feat_imp
+│   │   │   └── ...
+│   │   ├── shap_individual
+│   │   │   └── ...
+│   │   └── shap_values
+│   │       └── ...
 │   ├── Productivity.pdf
 │   └── Quality.pdf
 ├── Scripts
 │   ├── Data
 │   │   ├── DataCollection
+│   │   │   └── ...
 │   │   ├── DataExtraction
 │   │   │   ├── DeveloperFurtherInfo
+│   │   │   │   └── ...
 │   │   │   ├── IssueFurtherInfo
+│   │   │   │   └── ...
 │   │   │   ├── SprintFurtherInfo
+│   │   │   │   └── ...
 │   │   │   └── MainInfo
+│   │   │       └── ...
 │   │   └── Utility
+│   │       └── ...
 │   ├── Modeling
-│   │   └── Utility
+│   │   ├── Utility
+│   │   │   └── ...
+│   │   └── ...
+│   ├── Feature Analysis  
+│   │   └── ...
 │   └── requirements.txt
 ├── Sprint2Vec_Config.xlsx
 ├── Sprint2Vec_Pipeline.png
@@ -139,14 +210,16 @@ This project is written in Python 🐍 and requires the version 3.7 or higher.
     Dependency file:
     - `requirements.txt`
 
-- **Evaluation Results**: Includes summary files (`Productivity.pdf` and `Quality.pdf`) with experimental results like MAE, percentage improvement, Wilcoxon p-value, and A12 effect size for various approaches across projects. Also contains:
+- **Results**: Includes summary files (`Productivity.pdf` and `Quality.pdf`) with experimental results like MAE, MSE, RMSE, percentage improvement, Wilcoxon p-value, and A12 effect size for various approaches across projects. Also contains:
     - `Evaluation Results`: Raw evaluation results (MAE)
     - `Raw Errors`: Error files for raw and absolute errors during evaluation
     - `Predictions`: Raw prediction files during evaluation
+    - `Feature Analysis`: Results from SHAP's feature analysis
 
 - **Scripts**: Contains two subfolders:
     - `Data`: Scripts for data collection and extraction
     - `Modeling`: Scripts for data preprocessing, model training, and evaluation
+    - `Feature Analysis`: Scripts for SHAP's feature analysis
 
 Additional Files:
 - `Sprint2Vec_Config.xlsx`: Best configuration of `sprint2vec` for each case of project and task
@@ -157,7 +230,7 @@ Additional Files:
 
     It is recommended to use a virtual environment to manage dependencies. Follow the appropriate instructions below based on your environment:
     - Using `venv` (Python's built-in tool): To create a virtual environment, refer to the official [Python documentation](https://docs.python.org/3/library/venv.html).
-    - Using Conda: If you're using Conda, follow the instructions provided in this [Conda guide](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)).
+    - Using Conda: If you're using Conda, follow the instructions provided in this [Conda guide](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html).
 
     After creating the virtual environment, activate it and install the required packages by running the following command:
     ```bash
@@ -335,6 +408,29 @@ Additional Files:
 > ```bash
 > python Modeling/run_data.py
 > ```
+
+- **Feature Analysis with SHAP**
+
+    To understand how features influence predictions, we applied SHAP (SHapley Additive exPlanations). SHAP's strength provides interpretable insights into each feature's impact on the model's predictions. This part contain 3 scripts which are:
+
+    - [run_shap.py](Scripts/Feature%20Analysis/run_shap.py) is used for estimating the SHAP values for each feature
+    - [run_shap_feat_imp.py](Scripts/Feature%20Analysis/run_shap_feat_imp.py) is used for constructing the list most important features with their normalized SHAP values and direction of correlation.
+    - [run_shap_group_feat_imp.py](Scripts/Feature%20Analysis/run_shap_group_feat_imp.py) is used for averaging SHAP values for 5 distinct groups of features.
+
+    You can run this kind of script by:
+    > ```bash
+    > python Feature_Analysis/<script>
+    > ```
+
+    > ℹ️ Note: 
+    >
+    > *Scripts require customization based on your workspace configurations. For example,*
+    > ```python
+    >    best_model = load_model("<best_model_path>".format(repo, task, best_model_name), custom_objects=ak.CUSTOM_OBJECTS)
+    >    train_df = pd.read_csv("<train_data>".format(task, repo, "_".join(best_model_name.split("_")[:-1])))
+    > ```
+    > *`<best_model_path>` and `<train_data>` should be replaced with the path of the best model and the path of training data.*
+
 
 ## 👥 Authors
 - Morakot Choetkiertikul
