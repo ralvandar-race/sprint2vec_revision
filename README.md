@@ -418,9 +418,9 @@ Additional Files:
     - [run_shap_group_feat_imp.py](Scripts/Feature%20Analysis/run_shap_group_feat_imp.py) is used for averaging SHAP values for 5 distinct groups of features.
 
     You can run this kind of script by:
-    > ```bash
-    > python Feature_Analysis/<script>
-    > ```
+    ```bash
+    python Feature_Analysis/<script>
+    ```
 
     > ℹ️ Note: 
     >
