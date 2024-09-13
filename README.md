@@ -146,17 +146,15 @@ Iterative approaches, like Agile Scrum are commonly adopted to enhance the softw
 │   │   │   └── ...
 │   │   └── talendforge
 │   │       └── ...
-│   ├── Feature Analysis  
-│   │   ├── shap_feat_imp_df
-│   │   │   └── ...
-│   │   ├── shap_group_feat_imp
-│   │   │   └── ...
-│   │   ├── shap_individual
-│   │   │   └── ...
-│   │   └── shap_values
-│   │       └── ...
-│   ├── Productivity.pdf
-│   └── Quality.pdf
+│   └── Feature Analysis  
+│       ├── shap_feat_imp_df
+│       │   └── ...
+│       ├── shap_group_feat_imp
+│       │   └── ...
+│       ├── shap_individual
+│       │   └── ...
+│       └── shap_values
+│           └── ...
 ├── Scripts
 │   ├── Data
 │   │   ├── DataCollection
@@ -210,13 +208,13 @@ This project is written in Python 🐍 and requires the version 3.7 or higher.
     Dependency file:
     - `requirements.txt`
 
-- **Results**: Includes summary files (`Productivity.pdf` and `Quality.pdf`) with experimental results like MAE, MSE, RMSE, percentage improvement, Wilcoxon p-value, and A12 effect size for various approaches across projects. Also contains:
+- **Results**: Contains four subfolders:
     - `Evaluation Results`: Raw evaluation results (MAE)
     - `Raw Errors`: Error files for raw and absolute errors during evaluation
     - `Predictions`: Raw prediction files during evaluation
     - `Feature Analysis`: Results from SHAP's feature analysis
 
-- **Scripts**: Contains two subfolders:
+- **Scripts**: Contains three subfolders:
     - `Data`: Scripts for data collection and extraction
     - `Modeling`: Scripts for data preprocessing, model training, and evaluation
     - `Feature Analysis`: Scripts for SHAP's feature analysis
