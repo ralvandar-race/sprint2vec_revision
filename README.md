@@ -1,4 +1,4 @@
-# 🏃‍♂️ Sprint2Vec: a deep characterization of sprints in iterative software development
+# Replication Package of the Paper: "Sprint2Vec: a deep characterization of sprints in iterative software development"
 
 This repository contains the code, data, models, and experimental results for the paper "Sprint2Vec: a deep characterization of sprints in iterative software development" submitted to IEEE Transactions on Software Engineering (TSE).
 
