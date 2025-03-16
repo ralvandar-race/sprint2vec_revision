@@ -1,44 +1,38 @@
 import sys
+import os
 
-class RepoConfig():
-
-    def __init__(self, name, domain, userpass, storypoint1):
+class RepoConfig:
+    def __init__(self, name):
         self.name = name
-        self.domain = domain
-        self.userpass = userpass
-        self.storypoint1 = storypoint1
+        self.data_path = f"D:/REVA/Capstone1/sprint2vec_revision/Dataset/existing/{name}_existing"
+    
+    @staticmethod
+    def createRepo(name):
+        valid_repos = ['apache', 'jenkins', 'jira', 'spring', 'talendforge']
+        if name not in valid_repos:
+            raise ValueError(f"Unknown repository: {name}")
+        return RepoConfig(name)
 
-def createRepo():
+def getExistingRepo(name):
     """
-    Create a new RepoConfig object to store the repository information
-    <username:password>: The username and password used to login to the repository
-
-    :return: The RepoConfig object
+    Get configuration for existing repository data
+    Args:
+        name: Repository name ('apache', 'jenkins', 'jira', 'spring', 'talendforge')
+    Returns:
+        RepoConfig object
     """
-    while True:
-        try:
-            choice = int(input("Enter the number to select the repository\n[1] Apache\n[2] Jenkins\n[3] Jira\n[4] Spring\n[5] Talendforge\n"))
-            if choice <= 0 and choice > 5:
-                print("Try again!!!")
-            else:
-                if choice == 1:
-                    # name, domain, userpass, field number of story point
-                    repo = RepoConfig("apache", "issues.apache.org/jira", "<username>:<password>", "12310293")
-                elif choice == 2:
-                    repo = RepoConfig("jenkins", "issues.jenkins.io", "<username>:<password>", "10332")
-                elif choice == 3:
-                    repo = RepoConfig("jira", "jira.atlassian.com", "<username>:<password>", "10571")
-                elif choice == 4:
-                    repo = RepoConfig("spring", "jira.spring.io", "<username>:<password>", "10142")
-                elif choice == 5:
-                    repo = RepoConfig("talendforge", "jira.talendforge.org", "<username>:<password>", "10150")
-                print("\n================= WELCOME TO {} =================\n".format(repo.name.upper()))
-                return repo
-        except KeyboardInterrupt:
-            print("Interrupted by user")
-            sys.exit()
-        except Exception:
-            print("Only number is valid!!!")
+    repo_configs = {
+        "apache": ("issues.apache.org/jira", "12310293"),
+        "jenkins": ("issues.jenkins.io", "10332"),
+        "jira": ("jira.atlassian.com", "10571"),
+        "spring": ("jira.spring.io", "10142"),
+        "talendforge": ("jira.talendforge.org", "10150")
+    }
+    
+    if name not in repo_configs:
+        raise ValueError(f"Unknown repository: {name}")
+        
+    domain, storypoint1 = repo_configs[name]
+    return createRepo(name, domain, "username:password", storypoint1)
 
 
-            

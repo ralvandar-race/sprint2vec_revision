@@ -8,10 +8,16 @@ from datetime import datetime
 import pymysql
 import requests
 
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-import Utility.DBConfig as DB
-import Utility.JSONUtility as Utility
-import Utility.RepoConfig as Repo
+# Update the path handling for Utility modules
+current_dir = os.path.dirname(os.path.abspath(__file__))
+parent_dir = os.path.dirname(os.path.dirname(current_dir))
+utility_dir = os.path.join(os.path.dirname(current_dir), 'Utility')
+sys.path.insert(0, utility_dir)
+
+# Update imports to use the functions directly
+from DBConfig import createDB
+from RepoConfig import createRepo
+import JSONUtility as Utility
 
 
 def main():
@@ -22,45 +28,38 @@ def main():
 
 
 def collectBoard():
-    """
-    Collect the board ID from the repository
-    """
-    print("Collect Board ID...")
-
-    json_data = Utility.loadRapidBoardJSON(repo.name, db.folder)   # Modified
+    """Collect record IDs from existing dataset"""
+    print("Collecting Record IDs from existing data...")
 
     try:
+        json_data = Utility.loadRapidBoardJSON(repo.name, db.folder)
+        
+        # Check existing board_ids
         select = "SELECT board_id FROM board"
         cursor.execute(select)
-        result = cursor.fetchall()
-        exist = False
-
+        existing_ids = {row['board_id'] for row in cursor.fetchall()}
+        
         countBoard = 0
-        for board in json_data['views']:
-            currentBoardID = str(board['id'])
-            for row in result:
-                if currentBoardID == row['board_id']:
-                    exist = True
-            if exist == False:
-                # print("{} {} {} {}".format(board['id'], board['name'], board['type'],board['self']))
-                insertBoardID = "INSERT INTO board(id, board_id, collectedTime) VALUES(%s, %s, %s);"
+        for record in json_data['views']:
+            currentID = record['id']
+            
+            if currentID not in existing_ids:
+                insertBoardID = "INSERT INTO board(board_id, collectedTime) VALUES(%s, %s);"
                 inputPara = (
-                    countBoard,
-                    currentBoardID, 
-                    datetime.now() 
+                    currentID, 
+                    datetime.now()
                 )
-                print("\r\n\r\nRecord '{}' [{}] inserted successfully into DB".format(countBoard,board['id']))
+                print(f"\nInserting Record ID: {currentID}")
                 cursor.execute(insertBoardID, inputPara)
                 connection.commit()
                 countBoard += 1
-
             else:
-                print("Record '{}' is already in DB".format(board['id']))
-                exist = False
-    except pymysql.Error as e:
-        print("ERROR: {}".format(e))
+                print(f"Record ID {currentID} already exists in DB")
+
+    except Exception as e:
+        print(f"ERROR: {e}")
     finally:
-        print("\r\n----------------------STORE BOARD ID ON DB COMPLETED----------------------\r\n")
+        print(f"\n----------------------RECORD ID COLLECTION COMPLETED ({countBoard} records)----------------------\n")
 
 
 def getSprintList(): 
@@ -130,7 +129,6 @@ def createRequest(url):
     Send a request to the given URL
     <url>: The URL to send the request to
     """
-    # userpass = "username:password"
     userpass = repo.userpass
     encoded = str(base64.b64encode(bytearray(userpass, "utf-8")))
     basicAuth = "Basic " + encoded[2:len(encoded)-1]
@@ -149,42 +147,53 @@ def createRequest(url):
         print("ERROR: {}".format(e))
 
     json_data = json.loads(response.text)
-    # print(json_data)
-
     return json_data
 
 
 def writeFile(data, type, folder, repo, boardID="", sprintID=""):
     if type == "board":
-        path = "<file_path>".format(folder, repo, boardID)
+        path = "{}/{}/board_{}.json".format(folder, repo, boardID)
     elif type == "sprintGreen":
-        path = "<file_path>".format(folder, repo, boardID, sprintID)
-    # try:
+        path = "{}/{}/sprint_{}_{}.json".format(folder, repo, boardID, sprintID)
     with open(path, 'w') as json_file:
         json.dump(data, json_file, indent=4)
     print("Write '{}' success!!".format(json_file.name))
-    # except:
-        # print("Write error!!")
-        # sys.exit(1)
 
 
 if __name__ == '__main__':
-    repo = Repo.createRepo()
-    db = DB.createDB(repo)
-
-    connection = pymysql.connect(
-        host=db.host,
-        port=db.port,
-        user=db.user,
-        passwd=db.pwd,
-        database=db.repo.name,
-        cursorclass=pymysql.cursors.DictCursor
+    repo = createRepo(
+        "apache"
+    )
+    
+    db = createDB(
+        repo=repo,
+        host="localhost",
+        port=3306,
+        user="root",
+        pwd="capstone",
+        folder="D:/REVA/Capstone1/sprint2vec_revision/Dataset/existing"  # Updated path
     )
 
-    cursor = connection.cursor()   
+    try:
+        connection = pymysql.connect(
+            host=db.host,
+            port=db.port,
+            user=db.user,
+            passwd=db.pwd,
+            database="sprint2vec",
+            cursorclass=pymysql.cursors.DictCursor
+        )
+        
+        cursor = connection.cursor()
+        print("Database connection established successfully")
 
-    main()
+        main()
 
-    cursor.close()
-    connection.close()
-    print("DB Connection is closed")
+    except pymysql.Error as e:
+        print(f"Error connecting to MySQL: {e}")
+    
+    finally:
+        if 'connection' in locals() and connection.open:
+            cursor.close()
+            connection.close()
+            print("DB Connection is closed")
