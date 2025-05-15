@@ -443,5 +443,23 @@ This work was financially supported by the Office of the Permanent Secretary, Mi
 
 ## 📖 Citation
 If you use the concept, code, data or models in this repository, please cite the following paper:
+## 📖 Citation
+If you use the concept, code, data or models in this repository, please cite the following paper:
 ```
+@article{10.1109/TSE.2024.3509016,
+    author = {Choetkiertikul, Morakot and Banyongrakkul, Peerachai and Ragkhitwetsagul, Chaiyong and Tuarob, Suppawong and Dam, Hoa Khanh and Sunetnanta, Thanwadee},
+    title = {Sprint2Vec: A Deep Characterization of Sprints in Iterative Software Development},
+    year = {2025},
+    issue_date = {Jan. 2025},
+    publisher = {IEEE Press},
+    volume = {51},
+    number = {1},
+    issn = {0098-5589},
+    url = {https://doi.org/10.1109/TSE.2024.3509016},
+    doi = {10.1109/TSE.2024.3509016},
+    journal = {IEEE Trans. Softw. Eng.},
+    month = jan,
+    pages = {220–242},
+    numpages = {23}
+}
 ```
