@@ -1,0 +1,229 @@
+2025-03-15 21:50:10,202 - INFO - Processing repositories: jenkins, jira, spring, talendforge
+2025-03-15 21:50:10,205 - INFO - 
+Processing JENKINS
+2025-03-15 21:50:10,207 - ERROR - Error processing jenkins: 'Pipeline' object has no attribute 'mysql_validator'
+2025-03-15 21:50:10,209 - INFO - 
+Processing JIRA
+2025-03-15 21:50:10,211 - ERROR - Error processing jira: 'Pipeline' object has no attribute 'mysql_validator'
+2025-03-15 21:50:10,213 - INFO - 
+Processing SPRING
+2025-03-15 21:50:10,214 - ERROR - Error processing spring: 'Pipeline' object has no attribute 'mysql_validator'
+2025-03-15 21:50:10,218 - INFO - 
+Processing TALENDFORGE
+2025-03-15 21:50:10,220 - ERROR - Error processing talendforge: 'Pipeline' object has no attribute 'mysql_validator'
+2025-03-15 22:00:46,369 - INFO - MySQL connection successful
+2025-03-15 22:00:46,373 - INFO - Processing repositories: jenkins, jira, spring, talendforge
+2025-03-15 22:00:46,376 - INFO - 
+Processing JENKINS
+2025-03-15 22:00:46,446 - INFO - MySQL connection successful
+2025-03-15 22:00:52,920 - INFO - Epoch 1: Train Loss = 49.4853, Val Loss = 1.0587
+2025-03-15 22:00:59,268 - INFO - Epoch 2: Train Loss = 3.0175, Val Loss = 0.2478
+2025-03-15 22:01:05,802 - INFO - Epoch 3: Train Loss = 1.4925, Val Loss = 0.1923
+2025-03-15 22:01:12,623 - INFO - Epoch 4: Train Loss = 1.2345, Val Loss = 0.2015
+2025-03-15 22:01:21,301 - INFO - Epoch 5: Train Loss = 1.0017, Val Loss = 0.1440
+2025-03-15 22:01:28,256 - INFO - Epoch 6: Train Loss = 0.9638, Val Loss = 0.1366
+2025-03-15 22:01:36,444 - INFO - Epoch 7: Train Loss = 0.8731, Val Loss = 0.1295
+2025-03-15 22:01:45,731 - INFO - Epoch 8: Train Loss = 0.8142, Val Loss = 0.1537
+2025-03-15 22:01:56,914 - INFO - Epoch 9: Train Loss = 0.7987, Val Loss = 0.1271
+2025-03-15 22:02:03,478 - INFO - Epoch 10: Train Loss = 0.7549, Val Loss = 0.1145
+2025-03-15 22:02:10,543 - INFO - Epoch 11: Train Loss = 0.7007, Val Loss = 0.1421
+2025-03-15 22:02:16,991 - INFO - Epoch 12: Train Loss = 0.6822, Val Loss = 0.1292
+2025-03-15 22:02:23,086 - INFO - Epoch 13: Train Loss = 0.6557, Val Loss = 0.1435
+2025-03-15 22:02:31,869 - INFO - Epoch 14: Train Loss = 0.6707, Val Loss = 0.1583
+2025-03-15 22:02:39,210 - INFO - Epoch 15: Train Loss = 0.6420, Val Loss = 0.1469
+2025-03-15 22:02:45,037 - INFO - Epoch 16: Train Loss = 0.6221, Val Loss = 0.1718
+2025-03-15 22:02:50,202 - INFO - Epoch 17: Train Loss = 0.6108, Val Loss = 0.1358
+2025-03-15 22:02:55,385 - INFO - Epoch 18: Train Loss = 0.5741, Val Loss = 0.1491
+2025-03-15 22:03:01,052 - INFO - Epoch 19: Train Loss = 0.6018, Val Loss = 0.1250
+2025-03-15 22:03:06,203 - INFO - Epoch 20: Train Loss = 0.5913, Val Loss = 0.1631
+2025-03-15 22:03:11,544 - INFO - Epoch 21: Train Loss = 0.6170, Val Loss = 0.1507
+2025-03-15 22:03:16,734 - INFO - Epoch 22: Train Loss = 0.6586, Val Loss = 0.1315
+2025-03-15 22:03:21,962 - INFO - Epoch 23: Train Loss = 0.6438, Val Loss = 0.1265
+2025-03-15 22:03:27,113 - INFO - Epoch 24: Train Loss = 0.6081, Val Loss = 0.1438
+2025-03-15 22:03:32,255 - INFO - Epoch 25: Train Loss = 0.5799, Val Loss = 0.1413
+2025-03-15 22:03:37,440 - INFO - Epoch 26: Train Loss = 0.5949, Val Loss = 0.1396
+2025-03-15 22:03:42,575 - INFO - Epoch 27: Train Loss = 0.7115, Val Loss = 0.1395
+2025-03-15 22:03:47,801 - INFO - Epoch 28: Train Loss = 0.5677, Val Loss = 0.1323
+2025-03-15 22:03:52,923 - INFO - Epoch 29: Train Loss = 0.5361, Val Loss = 0.1375
+2025-03-15 22:03:58,232 - INFO - Epoch 30: Train Loss = 0.5285, Val Loss = 0.1277
+2025-03-15 22:04:03,560 - INFO - Epoch 31: Train Loss = 0.5247, Val Loss = 0.1454
+2025-03-15 22:04:08,724 - INFO - Epoch 32: Train Loss = 0.5541, Val Loss = 0.1138
+2025-03-15 22:04:15,660 - INFO - Epoch 33: Train Loss = 0.5384, Val Loss = 0.1247
+2025-03-15 22:04:21,960 - INFO - Epoch 34: Train Loss = 0.5566, Val Loss = 0.1088
+2025-03-15 22:04:28,299 - INFO - Epoch 35: Train Loss = 0.5076, Val Loss = 0.1254
+2025-03-15 22:04:33,542 - INFO - Epoch 36: Train Loss = 0.4637, Val Loss = 0.1197
+2025-03-15 22:04:38,700 - INFO - Epoch 37: Train Loss = 0.4788, Val Loss = 0.1353
+2025-03-15 22:04:43,832 - INFO - Epoch 38: Train Loss = 0.4382, Val Loss = 0.1173
+2025-03-15 22:04:49,043 - INFO - Epoch 39: Train Loss = 0.4528, Val Loss = 0.1190
+2025-03-15 22:04:54,178 - INFO - Epoch 40: Train Loss = 0.4375, Val Loss = 0.1104
+2025-03-15 22:05:00,091 - INFO - Epoch 41: Train Loss = 0.5473, Val Loss = 0.1125
+2025-03-15 22:05:05,509 - INFO - Epoch 42: Train Loss = 0.6142, Val Loss = 0.1292
+2025-03-15 22:05:10,910 - INFO - Epoch 43: Train Loss = 0.4706, Val Loss = 0.1223
+2025-03-15 22:05:16,047 - INFO - Epoch 44: Train Loss = 0.3925, Val Loss = 0.1237
+2025-03-15 22:05:21,339 - INFO - Epoch 45: Train Loss = 0.3926, Val Loss = 0.1195
+2025-03-15 22:05:26,484 - INFO - Epoch 46: Train Loss = 0.4068, Val Loss = 0.1273
+2025-03-15 22:05:31,643 - INFO - Epoch 47: Train Loss = 0.3903, Val Loss = 0.1425
+2025-03-15 22:05:36,824 - INFO - Epoch 48: Train Loss = 0.3247, Val Loss = 0.1122
+2025-03-15 22:05:42,057 - INFO - Epoch 49: Train Loss = 0.3944, Val Loss = 0.1094
+2025-03-15 22:05:47,345 - INFO - Epoch 50: Train Loss = 0.3890, Val Loss = 0.1295
+2025-03-15 22:05:51,306 - INFO - 
+Processing JIRA
+2025-03-15 22:05:51,360 - INFO - MySQL connection successful
+2025-03-15 22:06:03,992 - INFO - Epoch 1: Train Loss = 5556.7873, Val Loss = 2.9011
+2025-03-15 22:06:15,708 - INFO - Epoch 2: Train Loss = 871.9363, Val Loss = 8.6301
+2025-03-15 22:06:26,651 - INFO - Epoch 3: Train Loss = 511.0281, Val Loss = 12.1535
+2025-03-15 22:06:37,734 - INFO - Epoch 4: Train Loss = 29.4358, Val Loss = 2.9880
+2025-03-15 22:06:48,222 - INFO - Epoch 5: Train Loss = 3.1710, Val Loss = 2.9403
+2025-03-15 22:06:59,103 - INFO - Epoch 6: Train Loss = 4.6116, Val Loss = 2.3447
+2025-03-15 22:07:12,600 - INFO - Epoch 7: Train Loss = 32.2042, Val Loss = 2.4774
+2025-03-15 22:07:23,697 - INFO - Epoch 8: Train Loss = 4.5182, Val Loss = 2.6953
+2025-03-15 22:07:34,509 - INFO - Epoch 9: Train Loss = 47.1544, Val Loss = 2.3910
+2025-03-15 22:07:45,397 - INFO - Epoch 10: Train Loss = 3.9466, Val Loss = 2.2906
+2025-03-15 22:07:57,693 - INFO - Epoch 11: Train Loss = 38.5470, Val Loss = 2.4985
+2025-03-15 22:08:10,666 - INFO - Epoch 12: Train Loss = 2.3926, Val Loss = 2.3469
+2025-03-15 22:08:21,681 - INFO - Epoch 13: Train Loss = 4.2506, Val Loss = 2.4390
+2025-03-15 22:08:32,764 - INFO - Epoch 14: Train Loss = 7.4730, Val Loss = 2.2844
+2025-03-15 22:08:45,446 - INFO - Epoch 15: Train Loss = 2.6043, Val Loss = 2.1167
+2025-03-15 22:08:58,470 - INFO - Epoch 16: Train Loss = 40.1781, Val Loss = 2.4656
+2025-03-15 22:09:09,892 - INFO - Epoch 17: Train Loss = 9.5783, Val Loss = 2.3625
+2025-03-15 22:09:21,010 - INFO - Epoch 18: Train Loss = 13.8807, Val Loss = 2.2972
+2025-03-15 22:09:32,109 - INFO - Epoch 19: Train Loss = 4.6055, Val Loss = 2.2892
+2025-03-15 22:09:43,253 - INFO - Epoch 20: Train Loss = 26.4436, Val Loss = 2.5444
+2025-03-15 22:09:55,462 - INFO - Epoch 21: Train Loss = 2.4158, Val Loss = 2.3547
+2025-03-15 22:10:08,666 - INFO - Epoch 22: Train Loss = 2.2654, Val Loss = 2.2673
+2025-03-15 22:10:21,066 - INFO - Epoch 23: Train Loss = 19.2418, Val Loss = 2.3223
+2025-03-15 22:10:32,282 - INFO - Epoch 24: Train Loss = 2.2756, Val Loss = 2.3043
+2025-03-15 22:10:43,522 - INFO - Epoch 25: Train Loss = 2.4006, Val Loss = 2.2938
+2025-03-15 22:10:55,152 - INFO - Epoch 26: Train Loss = 2.2185, Val Loss = 2.2756
+2025-03-15 22:11:07,088 - INFO - Epoch 27: Train Loss = 2.1853, Val Loss = 2.2694
+2025-03-15 22:11:18,988 - INFO - Epoch 28: Train Loss = 2.1908, Val Loss = 2.1714
+2025-03-15 22:11:30,294 - INFO - Epoch 29: Train Loss = 2.2183, Val Loss = 2.2578
+2025-03-15 22:11:41,607 - INFO - Epoch 30: Train Loss = 2.1473, Val Loss = 2.2553
+2025-03-15 22:11:52,962 - INFO - Epoch 31: Train Loss = 2.1427, Val Loss = 2.2412
+2025-03-15 22:12:04,614 - INFO - Epoch 32: Train Loss = 30.9433, Val Loss = 2.2492
+2025-03-15 22:12:16,168 - INFO - Epoch 33: Train Loss = 4.3141, Val Loss = 2.2433
+2025-03-15 22:12:27,577 - INFO - Epoch 34: Train Loss = 2.1153, Val Loss = 2.2287
+2025-03-15 22:12:39,025 - INFO - Epoch 35: Train Loss = 2.0879, Val Loss = 2.2185
+2025-03-15 22:12:50,387 - INFO - Epoch 36: Train Loss = 2.0854, Val Loss = 2.2106
+2025-03-15 22:13:02,166 - INFO - Epoch 37: Train Loss = 2.0369, Val Loss = 2.1993
+2025-03-15 22:13:33,121 - INFO - Epoch 38: Train Loss = 2.8549, Val Loss = 2.1956
+2025-03-15 22:13:54,484 - INFO - Epoch 39: Train Loss = 2.0579, Val Loss = 2.1945
+2025-03-15 22:14:06,993 - INFO - Epoch 40: Train Loss = 2.0270, Val Loss = 2.1827
+2025-03-15 22:14:19,888 - INFO - Epoch 41: Train Loss = 1.9935, Val Loss = 2.1722
+2025-03-15 22:14:32,397 - INFO - Epoch 42: Train Loss = 1.9960, Val Loss = 2.1750
+2025-03-15 22:14:44,851 - INFO - Epoch 43: Train Loss = 2.0045, Val Loss = 2.1781
+2025-03-15 22:14:57,911 - INFO - Epoch 44: Train Loss = 1.9871, Val Loss = 2.1859
+2025-03-15 22:15:11,387 - INFO - Epoch 45: Train Loss = 1.9707, Val Loss = 2.1606
+2025-03-15 22:15:24,616 - INFO - Epoch 46: Train Loss = 1.9778, Val Loss = 2.1548
+2025-03-15 22:15:37,424 - INFO - Epoch 47: Train Loss = 1.9588, Val Loss = 2.1576
+2025-03-15 22:15:50,790 - INFO - Epoch 48: Train Loss = 1.9622, Val Loss = 2.1582
+2025-03-15 22:16:04,649 - INFO - Epoch 49: Train Loss = 1.9573, Val Loss = 2.1641
+2025-03-15 22:16:18,149 - INFO - Epoch 50: Train Loss = 3.6545, Val Loss = 2.1674
+2025-03-15 22:16:23,424 - INFO - 
+Processing SPRING
+2025-03-15 22:16:23,480 - INFO - MySQL connection successful
+2025-03-15 22:16:27,466 - INFO - Epoch 1: Train Loss = 181.1579, Val Loss = 12.3311
+2025-03-15 22:16:31,992 - INFO - Epoch 2: Train Loss = 22.0607, Val Loss = 1.8668
+2025-03-15 22:16:35,517 - INFO - Epoch 3: Train Loss = 13.9206, Val Loss = 1.5405
+2025-03-15 22:16:39,211 - INFO - Epoch 4: Train Loss = 10.2302, Val Loss = 1.5412
+2025-03-15 22:16:43,019 - INFO - Epoch 5: Train Loss = 8.6321, Val Loss = 1.2384
+2025-03-15 22:16:47,092 - INFO - Epoch 6: Train Loss = 8.0598, Val Loss = 1.1821
+2025-03-15 22:16:51,719 - INFO - Epoch 7: Train Loss = 7.4148, Val Loss = 1.0709
+2025-03-15 22:16:55,328 - INFO - Epoch 8: Train Loss = 7.4049, Val Loss = 0.9990
+2025-03-15 22:17:00,143 - INFO - Epoch 9: Train Loss = 7.2227, Val Loss = 0.9292
+2025-03-15 22:17:05,505 - INFO - Epoch 10: Train Loss = 6.7623, Val Loss = 0.9577
+2025-03-15 22:17:09,210 - INFO - Epoch 11: Train Loss = 6.6901, Val Loss = 0.9366
+2025-03-15 22:17:12,896 - INFO - Epoch 12: Train Loss = 6.6456, Val Loss = 0.9169
+2025-03-15 22:17:17,631 - INFO - Epoch 13: Train Loss = 6.6737, Val Loss = 0.8869
+2025-03-15 22:17:21,640 - INFO - Epoch 14: Train Loss = 6.4500, Val Loss = 0.8887
+2025-03-15 22:17:25,339 - INFO - Epoch 15: Train Loss = 6.5837, Val Loss = 0.8981
+2025-03-15 22:17:29,076 - INFO - Epoch 16: Train Loss = 6.4308, Val Loss = 0.9166
+2025-03-15 22:17:32,841 - INFO - Epoch 17: Train Loss = 6.5418, Val Loss = 0.9112
+2025-03-15 22:17:36,251 - INFO - Epoch 18: Train Loss = 6.1750, Val Loss = 0.8813
+2025-03-15 22:17:40,324 - INFO - Epoch 19: Train Loss = 6.4145, Val Loss = 0.8742
+2025-03-15 22:17:44,101 - INFO - Epoch 20: Train Loss = 6.1528, Val Loss = 1.0330
+2025-03-15 22:17:48,585 - INFO - Epoch 21: Train Loss = 6.1908, Val Loss = 0.9037
+2025-03-15 22:17:52,198 - INFO - Epoch 22: Train Loss = 6.0618, Val Loss = 0.8677
+2025-03-15 22:17:56,065 - INFO - Epoch 23: Train Loss = 5.9530, Val Loss = 0.8731
+2025-03-15 22:18:00,316 - INFO - Epoch 24: Train Loss = 6.0435, Val Loss = 1.0675
+2025-03-15 22:18:04,330 - INFO - Epoch 25: Train Loss = 6.0069, Val Loss = 0.8602
+2025-03-15 22:18:08,076 - INFO - Epoch 26: Train Loss = 5.9293, Val Loss = 0.9679
+2025-03-15 22:18:13,902 - INFO - Epoch 27: Train Loss = 6.3057, Val Loss = 1.1145
+2025-03-15 22:18:18,916 - INFO - Epoch 28: Train Loss = 5.8411, Val Loss = 0.9670
+2025-03-15 22:18:22,905 - INFO - Epoch 29: Train Loss = 5.8831, Val Loss = 0.9182
+2025-03-15 22:18:27,032 - INFO - Epoch 30: Train Loss = 5.7974, Val Loss = 0.8476
+2025-03-15 22:18:31,086 - INFO - Epoch 31: Train Loss = 6.0683, Val Loss = 0.9169
+2025-03-15 22:18:36,455 - INFO - Epoch 32: Train Loss = 5.7152, Val Loss = 0.9896
+2025-03-15 22:18:40,000 - INFO - Epoch 33: Train Loss = 5.7267, Val Loss = 1.1030
+2025-03-15 22:18:44,106 - INFO - Epoch 34: Train Loss = 5.7031, Val Loss = 1.0917
+2025-03-15 22:18:47,434 - INFO - Epoch 35: Train Loss = 5.6374, Val Loss = 1.6006
+2025-03-15 22:18:50,713 - INFO - Epoch 36: Train Loss = 5.6140, Val Loss = 1.1609
+2025-03-15 22:18:53,905 - INFO - Epoch 37: Train Loss = 5.7722, Val Loss = 0.9713
+2025-03-15 22:18:57,034 - INFO - Epoch 38: Train Loss = 5.8441, Val Loss = 0.9683
+2025-03-15 22:19:00,615 - INFO - Epoch 39: Train Loss = 5.8053, Val Loss = 1.0530
+2025-03-15 22:19:04,272 - INFO - Epoch 40: Train Loss = 5.5272, Val Loss = 1.1039
+2025-03-15 22:19:07,972 - INFO - Epoch 41: Train Loss = 5.8311, Val Loss = 0.9797
+2025-03-15 22:19:11,572 - INFO - Epoch 42: Train Loss = 5.7233, Val Loss = 1.0205
+2025-03-15 22:19:14,775 - INFO - Epoch 43: Train Loss = 5.7418, Val Loss = 1.5159
+2025-03-15 22:19:17,843 - INFO - Epoch 44: Train Loss = 5.7376, Val Loss = 1.3644
+2025-03-15 22:19:20,843 - INFO - Epoch 45: Train Loss = 5.7401, Val Loss = 0.8029
+2025-03-15 22:19:24,961 - INFO - Epoch 46: Train Loss = 5.7177, Val Loss = 1.0127
+2025-03-15 22:19:28,314 - INFO - Epoch 47: Train Loss = 5.5769, Val Loss = 1.1989
+2025-03-15 22:19:32,044 - INFO - Epoch 48: Train Loss = 5.5301, Val Loss = 1.3983
+2025-03-15 22:19:35,087 - INFO - Epoch 49: Train Loss = 5.6920, Val Loss = 0.9609
+2025-03-15 22:19:38,094 - INFO - Epoch 50: Train Loss = 5.6501, Val Loss = 0.8997
+2025-03-15 22:19:41,846 - INFO - 
+Processing TALENDFORGE
+2025-03-15 22:19:41,895 - INFO - MySQL connection successful
+2025-03-15 22:19:50,917 - INFO - Epoch 1: Train Loss = 81.6840, Val Loss = 7.0744
+2025-03-15 22:19:58,440 - INFO - Epoch 2: Train Loss = 15.1156, Val Loss = 7.0878
+2025-03-15 22:20:05,121 - INFO - Epoch 3: Train Loss = 13.3999, Val Loss = 7.4728
+2025-03-15 22:20:12,000 - INFO - Epoch 4: Train Loss = 12.9773, Val Loss = 7.1872
+2025-03-15 22:20:18,577 - INFO - Epoch 5: Train Loss = 13.1216, Val Loss = 7.1259
+2025-03-15 22:20:25,013 - INFO - Epoch 6: Train Loss = 12.8609, Val Loss = 7.0707
+2025-03-15 22:20:33,593 - INFO - Epoch 7: Train Loss = 12.6698, Val Loss = 7.1865
+2025-03-15 22:20:39,922 - INFO - Epoch 8: Train Loss = 12.4931, Val Loss = 7.1620
+2025-03-15 22:20:46,349 - INFO - Epoch 9: Train Loss = 12.6624, Val Loss = 7.0707
+2025-03-15 22:20:53,771 - INFO - Epoch 10: Train Loss = 12.5154, Val Loss = 7.0782
+2025-03-15 22:21:01,111 - INFO - Epoch 11: Train Loss = 12.5841, Val Loss = 7.1456
+2025-03-15 22:21:07,855 - INFO - Epoch 12: Train Loss = 12.5469, Val Loss = 7.0386
+2025-03-15 22:21:15,508 - INFO - Epoch 13: Train Loss = 12.5134, Val Loss = 7.0956
+2025-03-15 22:21:22,446 - INFO - Epoch 14: Train Loss = 12.2219, Val Loss = 7.0363
+2025-03-15 22:21:30,011 - INFO - Epoch 15: Train Loss = 12.2531, Val Loss = 7.0970
+2025-03-15 22:21:37,055 - INFO - Epoch 16: Train Loss = 12.3474, Val Loss = 7.2555
+2025-03-15 22:21:43,587 - INFO - Epoch 17: Train Loss = 12.4257, Val Loss = 7.0400
+2025-03-15 22:21:50,225 - INFO - Epoch 18: Train Loss = 12.2944, Val Loss = 7.1808
+2025-03-15 22:21:56,844 - INFO - Epoch 19: Train Loss = 12.1521, Val Loss = 6.9916
+2025-03-15 22:22:04,301 - INFO - Epoch 20: Train Loss = 12.2090, Val Loss = 7.1639
+2025-03-15 22:22:11,774 - INFO - Epoch 21: Train Loss = 12.0703, Val Loss = 6.9888
+2025-03-15 22:22:19,209 - INFO - Epoch 22: Train Loss = 12.2278, Val Loss = 6.9648
+2025-03-15 22:22:27,013 - INFO - Epoch 23: Train Loss = 12.1927, Val Loss = 6.9098
+2025-03-15 22:22:35,013 - INFO - Epoch 24: Train Loss = 12.3950, Val Loss = 6.9558
+2025-03-15 22:22:41,730 - INFO - Epoch 25: Train Loss = 12.0498, Val Loss = 7.1424
+2025-03-15 22:22:48,315 - INFO - Epoch 26: Train Loss = 12.1228, Val Loss = 7.5082
+2025-03-15 22:22:54,968 - INFO - Epoch 27: Train Loss = 12.1172, Val Loss = 7.1280
+2025-03-15 22:23:01,864 - INFO - Epoch 28: Train Loss = 12.3768, Val Loss = 6.9889
+2025-03-15 22:23:08,565 - INFO - Epoch 29: Train Loss = 12.1800, Val Loss = 6.8983
+2025-03-15 22:23:16,255 - INFO - Epoch 30: Train Loss = 12.0719, Val Loss = 6.9378
+2025-03-15 22:23:23,677 - INFO - Epoch 31: Train Loss = 12.0513, Val Loss = 6.9460
+2025-03-15 22:23:30,364 - INFO - Epoch 32: Train Loss = 12.0799, Val Loss = 6.9983
+2025-03-15 22:23:37,307 - INFO - Epoch 33: Train Loss = 12.1189, Val Loss = 6.9617
+2025-03-15 22:23:44,014 - INFO - Epoch 34: Train Loss = 11.9821, Val Loss = 6.8966
+2025-03-15 22:23:51,495 - INFO - Epoch 35: Train Loss = 12.0738, Val Loss = 6.9156
+2025-03-15 22:23:58,991 - INFO - Epoch 36: Train Loss = 11.9874, Val Loss = 6.9818
+2025-03-15 22:24:05,841 - INFO - Epoch 37: Train Loss = 12.0280, Val Loss = 6.9077
+2025-03-15 22:24:12,749 - INFO - Epoch 38: Train Loss = 12.1573, Val Loss = 6.9680
+2025-03-15 22:24:19,440 - INFO - Epoch 39: Train Loss = 13.2624, Val Loss = 6.8990
+2025-03-15 22:24:26,213 - INFO - Epoch 40: Train Loss = 11.9879, Val Loss = 6.9796
+2025-03-15 22:24:32,857 - INFO - Epoch 41: Train Loss = 11.8870, Val Loss = 6.9083
+2025-03-15 22:24:39,602 - INFO - Epoch 42: Train Loss = 11.6355, Val Loss = 7.0167
+2025-03-15 22:24:46,192 - INFO - Epoch 43: Train Loss = 11.8889, Val Loss = 6.9047
+2025-03-15 22:24:52,871 - INFO - Epoch 44: Train Loss = 11.8111, Val Loss = 6.9206
+2025-03-15 22:24:59,985 - INFO - Epoch 45: Train Loss = 11.9889, Val Loss = 6.8481
+2025-03-15 22:25:08,781 - INFO - Epoch 46: Train Loss = 11.9053, Val Loss = 7.0160
+2025-03-15 22:25:15,799 - INFO - Epoch 47: Train Loss = 12.0004, Val Loss = 6.9612
+2025-03-15 22:25:22,921 - INFO - Epoch 48: Train Loss = 11.8558, Val Loss = 6.9274
+2025-03-15 22:25:29,627 - INFO - Epoch 49: Train Loss = 11.6897, Val Loss = 7.0347
+2025-03-15 22:25:36,322 - INFO - Epoch 50: Train Loss = 11.7439, Val Loss = 7.4211
+2025-03-15 22:25:40,232 - INFO - Results saved to D:\REVA\Capstone1\sprint2vec_revision\Results\pipeline_results.csv
+2025-03-15 22:25:40,235 - INFO - Results visualization completed
